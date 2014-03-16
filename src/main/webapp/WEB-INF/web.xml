@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" 
+  xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+   
+    <display-name>Grievance App</display-name>
+  
+    <welcome-file-list>
+    	<welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+   
+    <listener>
+          <listener-class> org.springframework.web.util.Log4jConfigListener </listener-class >
+    </listener>
+        
+   	<listener> 
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<listener>
+    	<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+	
+	<!-- Request Dispatcher Portal Requests -->
+	<servlet>
+		<servlet-name>PortalMVCServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>WEB-INF/applicationContext.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- Servlet Mapping for Potal Module -->
+	<servlet-mapping>
+		<servlet-name>PortalMVCServlet</servlet-name>
+		<url-pattern>/grievance/*</url-pattern>
+	</servlet-mapping>
+
+   <!-- Runtime Error Pages -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/p404.html</location>
+	</error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/siteunavailable.html</location>
+    </error-page>
+
+    <error-page>
+        <error-code>503</error-code>
+        <location>/siteunavailable.html</location>
+    </error-page>
+
+</web-app>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+    
+    <!--  Home Page  -->	
+	<definition name="portalHome"            		template="/WEB-INF/jsp/common/layout.jsp">
+	 	<put-attribute name="title"                	value="Grievance Home" type="string" />   
+	 	<put-attribute name="header"               value="/WEB-INF/jsp/common/header.jsp" />   
+	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/common/home.jsp"/>
+	    <put-attribute name="footer"                value="/WEB-INF/jsp/common/footer.jsp" />
+   	</definition>
+   	
+   	<!--  Portal Layout Definition -->
+    <definition name="portalLayout"   				template="/WEB-INF/jsp/grievance/grievancelayout.jsp">
+   	    <put-attribute name="skipToContentLink" 	value="true" />
+        <put-attribute name="header"                value="/WEB-INF/jsp/common/header.jsp" />
+        <put-attribute name="footer"                value="/WEB-INF/jsp/common/footer.jsp" />
+    </definition>
+    
+    <!--  SignIn Page  -->	
+	<definition name="signin"            		extends="portalLayout">
+	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/signin.jsp"/>
+	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
+   	</definition>
+   	
+   	 <!--  Welcome Page  -->	
+	<definition name="success"            		extends="portalLayout">
+	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/common/success.jsp"/>
+	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
+   	</definition>
+   	
+   	<!--  Registration Page  -->	
+	<definition name="createRegistry"            	extends="portalLayout">
+	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	    <put-attribute name="navigation"                value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/registration.jsp"/>
+	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
+   	</definition>
+
+</tiles-definitions>

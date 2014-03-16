@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+    
+  <description>JSTL tags for Registry pages</description>
+  <tlib-version>1.0</tlib-version>
+  <short-name>r</short-name>
+  <uri>/WEB-INF/taglibs/common/errorcond.tld</uri>
+  <tag>
+  	<name>ifError</name>
+  	<tag-class>com.macys.hub.web.common.tags.ErrorConditionTag</tag-class>
+	<body-content>JSP</body-content>
+	<attribute>
+	  	<name>errorCode</name>
+ 		<required>true</required>
+	</attribute>
+  	<attribute>
+  		<name>errorList</name>
+		<required>true</required>
+  		<rtexprvalue>true</rtexprvalue>
+  	</attribute>
+  	<attribute>
+  		<name>var</name>
+  	</attribute>	
+  </tag>
+ </taglib>
