@@ -374,5 +374,12 @@
           <version>${net.sf.json-lib.version}</version>
           <classifier>jdk15</classifier>
      </dependency>
+     
+     <dependency>
+		<groupId>javax.persistence</groupId>
+		<artifactId>persistence-api</artifactId>
+		<version>1.0-rev-1</version>
+	</dependency>
+	
   </dependencies>
  </project>
