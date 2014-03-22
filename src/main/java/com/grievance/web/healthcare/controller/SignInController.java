@@ -62,7 +62,7 @@ public class SignInController extends BaseController {
 
     	UserVB userVB = null;
 		System.out.print("Process Signin"+signInVB.getEmail());
-		signInValidator.validateHealthCareVB(signInVB,result);
+		signInValidator.validateVB(signInVB,result);
 		
 		if (result.hasErrors()) {
 			System.out.print("Errors");
