@@ -9,7 +9,7 @@ import com.grievance.web.healthcare.common.validation.ValidationUtilities;
 import com.grievance.web.healthcare.viewbean.SignInVB;
 
 @Component
-public class SignInVBValidator extends AbstractHealthCareValidator {
+public class SignInVBValidator extends AbstractVBValidator {
 
 	public boolean supports(Class<?> clazz) {
 		return SignInVB.class.isAssignableFrom(clazz);
@@ -23,7 +23,7 @@ public class SignInVBValidator extends AbstractHealthCareValidator {
 	}
 
 	@Override
-	public void validateHealthCareVB(Object object, Errors errors) {
+	public void validateVB(Object object, Errors errors) {
 		if (object instanceof SignInVB) {
 			SignInVB signInVB = (SignInVB) object;
 			validate(signInVB, errors);
