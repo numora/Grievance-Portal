@@ -22,6 +22,7 @@ public class Address {
 	private String zip;
 	private String po_box;
 	private User user;
+	private Member member;
 	
 	
 	@Id
@@ -87,6 +88,14 @@ public class Address {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "member", cascade = CascadeType.ALL)
+	public Member getMember() {
+		return member;
+	}
+	public void setUser(Member member) {
+		this.member = member;
 	}
 	
 	

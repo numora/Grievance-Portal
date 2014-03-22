@@ -27,6 +27,7 @@
 	<context:component-scan base-package="com.grievance.web.healthcare.viewbean" />
 	<context:component-scan base-package="com.grievance.web.healthcare.manager"/>
 	<context:component-scan base-package="com.grievance.web.healthcare.manager.impl"/>
+	<context:component-scan base-package="com.grievance.web.healthcare.newmodel"/>
 	<context:component-scan base-package="com.grievance.web.healthcare.model"/>
 	<context:component-scan base-package="com.grievance.web.healthcare.service"/>
 	<context:component-scan base-package="com.grievance.web.healthcare.view"/>
