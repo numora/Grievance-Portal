@@ -1,9 +1,11 @@
 package com.grievance.web.healthcare.manager;
 
-import com.grievance.web.healthcare.viewbean.UserVB;
+import com.grievance.web.healthcare.viewbean.ProfileVB;
 
 public interface UserManager {
 
-	UserVB getUserDetails(String userName, String passWord);
+	ProfileVB getUserDetails(String userName, String passWord);
+	
+	boolean createProfile(ProfileVB profileVB);
 	
 }
