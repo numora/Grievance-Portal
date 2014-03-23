@@ -8,7 +8,7 @@
     <!--  Home Page  -->	
 	<definition name="portalHome"            		template="/WEB-INF/jsp/common/layout.jsp">
 	 	<put-attribute name="title"                	value="Grievance Home" type="string" />   
-	 	<put-attribute name="header"               value="/WEB-INF/jsp/common/header.jsp" />   
+	 	<put-attribute name="header"                value="/WEB-INF/jsp/common/header.jsp" />   
 	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
 	    <put-attribute name="body"   				value="/WEB-INF/jsp/common/home.jsp"/>
 	    <put-attribute name="footer"                value="/WEB-INF/jsp/common/footer.jsp" />
@@ -22,7 +22,7 @@
     </definition>
     
     <!--  SignIn Page  -->	
-	<definition name="signin"            		extends="portalLayout">
+	<definition name="signin"            		    extends="portalLayout">
 	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
 	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
 	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/signin.jsp"/>
@@ -30,7 +30,7 @@
    	</definition>
    	
    	 <!--  Welcome Page  -->	
-	<definition name="success"            		extends="portalLayout">
+	<definition name="success"            		    extends="portalLayout">
 	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
 	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
 	    <put-attribute name="body"   				value="/WEB-INF/jsp/common/success.jsp"/>
@@ -38,10 +38,10 @@
    	</definition>
    	
    	<!--  Registration Page  -->	
-	<definition name="createRegistry"            	extends="portalLayout">
+	<definition name="createProfile"            	extends="portalLayout">
 	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
-	    <put-attribute name="navigation"                value="/WEB-INF/jsp/common/navigation.jsp" />
-	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/registration.jsp"/>
+	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/profile.jsp"/>
 	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
    	</definition>
 
