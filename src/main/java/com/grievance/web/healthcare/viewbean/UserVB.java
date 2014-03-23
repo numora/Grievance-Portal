@@ -11,11 +11,13 @@ public class UserVB extends BaseVB {
 	
 	private String password;
 	
+	private String confirmPassword;
+	
 	private String firstName;
 	
 	private String lastName;
 
-    private  Address address;
+    private  Address addressVB;
     
     private Phone phone;
 
@@ -38,10 +40,19 @@ public class UserVB extends BaseVB {
 	public String getPassword() {
 		return password;
 	}
-
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	
     public String getFirstName() {
 		return firstName;
 	}
@@ -58,12 +69,12 @@ public class UserVB extends BaseVB {
 		this.lastName = lastName;
 	}
 
-	public Address getAddress() {
-		return address;
+	public Address getAddressVB() {
+		return addressVB;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddressVB(Address addressVB) {
+		this.addressVB = addressVB;
 	}
 
 	public Phone getPhone() {

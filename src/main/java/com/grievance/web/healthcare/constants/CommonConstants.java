@@ -4,6 +4,8 @@ public interface CommonConstants {
 
 	// Model Attributes
 	String SIGN_IN_MODEL_ATTRIBUTE_NAME = "signInVB";
+	String PROFILE_MODEL_ATTRIBUTE_NAME = "profileVB";
+	
 	
 	// Sign In Constants
     String AUTHENTICATE_USER = "processSignIn";
@@ -23,7 +25,7 @@ public interface CommonConstants {
 		Home,
 		SignIn,
 		Success,
-		Registration,
+		CreateProfile,
 		EditAccount,
 		ViewAccount,
 		ResetPassword;
