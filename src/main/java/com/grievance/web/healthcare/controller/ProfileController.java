@@ -39,7 +39,7 @@ public class ProfileController extends BaseController {
 
 	public static final String VIEW_NAME = "createProfile";
 
-	public static final String PROFILE_MODEL_ATTRIBUTE_NAME = "userVB";
+	public static final String PROFILE_MODEL_ATTRIBUTE_NAME = "profileVB";
 
 	@Autowired
 	private ProfileVBValidator profileValidator;
