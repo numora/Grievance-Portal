@@ -25,6 +25,7 @@ public interface CommonConstants {
 		Home,
 		SignIn,
 		Success,
+		Registration,
 		CreateProfile,
 		EditAccount,
 		ViewAccount,
