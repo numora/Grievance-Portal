@@ -1,30 +1,19 @@
-insert into user (id, emailAddress, lastAccessTime, login_name, password, registrationDate, verified) 
-values (1, 'mj@mcnz.com', '2008-01-13 14:49:01', 'mj', 'abc123', '2006-02-01', 0);
+INSERT INTO ADDRESS
+	(ADDRESS_ID, ADDRESS_LINE_1, ADDRESS_LINE_2, STATE, CITY, ZIP, PO_BOX)
+VALUES 
+	(1, 'TEST STREET1', 'TEST APT1', 'CA', 'FREMONT', '94538', '123');
 
-insert into user (id, emailAddress, lastAccessTime, login_name, password, registrationDate, verified) 
-values (2, 'mario@scja.ca', '2008-01-01 14:49:01', 'mario', 'pass', '2007-02-01', 1);
+INSERT INTO USER
+	(USER_ID, PASSWORD, EMAIL_ID, LAST_MODIFIED_DATE, LOGIN_NAME, CREATED_DATE, VERIFIED, ROLE_ID, DOB, "LANGUAGE", ADDRESS_ID)
+VALUES 
+	(1, '1234', 'test1@test.com','2014-01-01 14:49:01' , 'test1','2014-01-01 14:49:01' , 'Y', 1, '2014-01-01 14:49:01', 'english',1);
 
-insert into user (id, emailAddress, lastAccessTime, login_name, password, registrationDate, verified) 
-values (3, 'avril@scja.com', '2008-01-13 14:49:01', 'sk8trgrl', 'password', '2008-02-01', 0);
-
-insert into user (id, emailAddress, lastAccessTime, login_name, password, registrationDate, verified) 
-values (4, 'getbent@scja.ca', '2006-10-15 14:49:01', 'ridley', 'mypassword', '2006-06-11', 1);
-
-insert into user (id, emailAddress, lastAccessTime, login_name, password, registrationDate, verified) 
-values (5, 'sheehan@princessjava.com', '2008-02-25 14:49:01', 'kerrr', 'pwd', '2008-01-12', 0);
-
-insert into user (id, emailAddress, lastAccessTime, login_name, password, registrationDate, verified) 
-values (6, 'rabbit@princessjava.com', '2008-01-13 14:49:01', 'astra', 'pwd', '2009-11-14', 0);
-
-insert into user (id, emailAddress, lastAccessTime, login_name, password, registrationDate, verified) 
-values (7, 'me@scwcd.com', '2008-09-15 14:49:01', 'cameron', '90210', '2008-09-12', 1);
-
-insert into user (id, emailAddress, lastAccessTime, login_name, password, registrationDate, verified) 
-values (8, 'stanley@pulpjava.com', '2008-02-25 14:49:01', 'stephen', 'low', '2008-03-15', 0);
-
-insert into user (id, emailAddress, lastAccessTime, login_name, password, registrationDate, verified) 
-values (9, 'ernesto@pulpjava.com', '1999-07-26 14:49:01', 'che', 'password', '1999-04-09', 1);
-
-insert into user (id, emailAddress, lastAccessTime, login_name, password, registrationDate, verified) 
-values (10, 'rabbit@scja.com', '2008-01-13 14:49:01', 'remy', 'password', '2007-06-21', 0);
-
+INSERT INTO USER
+	(USER_ID, PASSWORD, EMAIL_ID, LAST_MODIFIED_DATE, LOGIN_NAME, CREATED_DATE, VERIFIED, ROLE_ID, DOB, "LANGUAGE", ADDRESS_ID)
+VALUES 
+	(2, '1234', 'test2@test.com','2014-01-01 14:49:01' , 'test2','2014-01-01 14:49:01' , 'Y', 1, '2014-01-01 14:49:01', 'english',1);
+	
+INSERT INTO USER
+	(USER_ID, PASSWORD, EMAIL_ID, LAST_MODIFIED_DATE, LOGIN_NAME, CREATED_DATE, VERIFIED, ROLE_ID, DOB, "LANGUAGE", ADDRESS_ID)
+VALUES 
+	(3, '1234', 'test3@test.com','2014-01-01 14:49:01' , 'test3','2014-01-01 14:49:01' , 'Y', 1, '2014-01-01 14:49:01', 'english',1);
