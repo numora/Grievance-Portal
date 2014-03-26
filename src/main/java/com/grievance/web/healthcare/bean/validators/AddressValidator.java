@@ -1,7 +1,9 @@
 package com.grievance.web.healthcare.bean.validators;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
+@Component("addressValidator")
 public class AddressValidator extends AbstractBeanValidator {
 
 	@Override
