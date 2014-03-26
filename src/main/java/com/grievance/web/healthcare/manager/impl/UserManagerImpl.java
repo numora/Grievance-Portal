@@ -53,14 +53,14 @@ public class UserManagerImpl extends BaseManager implements UserManager {
 	
 	public boolean createProfile(ProfileVB profileVB) {
 		
-		if (logger.isDebugEnabled()) {
-			logger.debug("START: createProfile()::Create the User");
-		}
+		logger.debug("START: createProfile()::Create the User");
 		
 		boolean isProfileCreated = false;
 		
 		User user = new User();
 		user = (User) dozerTransformer.retrieveMap(profileVB,user,null);
+		
+		System.out.println("After Dozzer Map:"+ user.getEmailAddress());
 		
 		if (logger.isDebugEnabled()) {
 			logger.debug("END: createUser()");

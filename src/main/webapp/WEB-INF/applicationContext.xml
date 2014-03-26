@@ -23,7 +23,7 @@
 	<context:component-scan base-package="com.grievance.web.healthcare.bean.validators" />
 	<context:component-scan base-package="com.grievance.web.healthcare.common.validation" />
 	<context:component-scan base-package="com.grievance.web.healthcare.controller"/>
-	<context:component-scan base-package="com.grievance.web.healthcare.beans"/>
+	<context:component-scan base-package="com.grievance.web.healthcare.beans.common"/>
 	<context:component-scan base-package="com.grievance.web.healthcare.viewbean" />
 	<context:component-scan base-package="com.grievance.web.healthcare.manager"/>
 	<context:component-scan base-package="com.grievance.web.healthcare.manager.impl"/>
@@ -74,7 +74,15 @@
             </util:list>
         </beans:constructor-arg>
     </beans:bean>
-	
+    
+ 	<util:properties id="regularExpression"
+          location="classpath:META-INF\properties\portal_regular_expressions.properties"/>
+                    
+    <beans:bean id="regularExpressionViewHelper"
+                class="com.grievance.web.healthcare.helper.RegularExpressionViewHelper">
+        <beans:property name="servletContext" ref="servletContext"/>
+    </beans:bean>
+                     
 	<beans:bean id="helperUtil" class="com.grievance.web.healthcare.util.HelperUtil">
         <beans:property name="months">
             <util:map key-type="java.lang.Integer" value-type="java.lang.String">

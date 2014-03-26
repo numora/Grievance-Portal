@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +27,7 @@ import com.grievance.web.healthcare.bean.validators.ProfileVBValidator;
 import com.grievance.web.healthcare.constants.CommonConstants.Action;
 import com.grievance.web.healthcare.exception.GenericException;
 import com.grievance.web.healthcare.manager.UserManager;
+import com.grievance.web.healthcare.viewbean.BaseVB;
 import com.grievance.web.healthcare.viewbean.ProfileVB;
 
 import org.slf4j.Logger;
@@ -63,23 +65,20 @@ public class ProfileController extends BaseController {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		if (logger.isDebugEnabled()) {
-			logger.debug("START: In Setup Profile Form Method");
-		}
-		
+		logger.debug("Debug Statement");
+		logger.info("Info Statment");
+		logger.error("Error Statement");
 		return getFormView(Action.CreateProfile);
 	}
 
 	private ProfileVB populateProfileVB(HttpServletRequest request,
 			ProfileVB profileVB) {
 
-		if (logger.isDebugEnabled()) {
-			logger.debug("In Pre Populate Information for Profile Page");
-		}
-
 		if (null == profileVB) {
 			profileVB = new ProfileVB();
 		}
+		
+		profileVB.setStates(helperUtil.getStates());
 
 		return profileVB;
 	}
@@ -90,17 +89,17 @@ public class ProfileController extends BaseController {
 			BindingResult result, HttpServletRequest request,
 			HttpServletResponse response) throws GenericException {
 
-		if (logger.isDebugEnabled()) {
-			logger.debug("START: Create Profile ()"+ profileVB.toString());
-		}
+		logger.debug("START: Create Profile ()"+ profileVB.toString());
+		System.out.println("In Profile Controller");
 		
-		profileValidator.validateVB(profileVB, result);
+		profileValidator.validatePortalVB(profileVB,result);
+		
 		if (result.hasErrors()) {
 			return getFormView(Action.CreateProfile);
 		}
 
 		try {
-			
+			userManager.createProfile(profileVB);
 		} catch (Exception ex) {
 			throw new GenericException("Exception occurred while Creating Profile In ProfileController",ex);
 		}

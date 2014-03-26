@@ -28,6 +28,31 @@ public class RegularExpressionViewHelper implements ServletContextAware {
         }
     }
     
+    private String name;
+    
+    private String lastname;
+    
+    private String email;
+    
+    private String address;
+    
+    private String city;
+    
+    private String postalCode;
+    
+   	private String phone;
+    
+    private String numeric;
+    
+    private String password;
+    
+    public enum REGULAR_EXPRESSION {
+        EMAIL_REGULAR_EXPRESSION, NAME_REGULAR_EXPRESSION, ADDRESS_REGULAR_EXPRESSION, CITY_REGULAR_EXPRESSION,
+        ZIPCODE_REGULAR_EXPRESSION, PHONE_REGULAR_EXPRESSION, NUMERIC_REGULAR_EXPRESSION,
+        PASSWORD_REGULAR_EXPRESSION, LASTNAME_REGULAR_EXPRESSION, 
+        LOOKUP_EMAIL_REGULAR_EXPRESSION,
+    }
+    
     private void initializeRegularExpressions() {
 
         try {
@@ -43,7 +68,7 @@ public class RegularExpressionViewHelper implements ServletContextAware {
             this.city = regularExpression
                     .getProperty(REGULAR_EXPRESSION.CITY_REGULAR_EXPRESSION
                             .name());
-            this.zipCode = regularExpression
+            this.postalCode = regularExpression
                     .getProperty(REGULAR_EXPRESSION.ZIPCODE_REGULAR_EXPRESSION
                             .name());
             this.phone = regularExpression
@@ -64,31 +89,6 @@ public class RegularExpressionViewHelper implements ServletContextAware {
 
     }
     
-    private String name;
-    
-    private String lastname;
-    
-    private String email;
-    
-    private String address;
-    
-    private String city;
-    
-    private String zipCode;
-    
-    private String phone;
-    
-    private String numeric;
-    
-    private String password;
-    
-    public enum REGULAR_EXPRESSION {
-        EMAIL_REGULAR_EXPRESSION, NAME_REGULAR_EXPRESSION, ADDRESS_REGULAR_EXPRESSION, CITY_REGULAR_EXPRESSION,
-        ZIPCODE_REGULAR_EXPRESSION, PHONE_REGULAR_EXPRESSION, NUMERIC_REGULAR_EXPRESSION,
-        PASSWORD_REGULAR_EXPRESSION, ATTENTION_REGULAR_EXPRESSION, LASTNAME_REGULAR_EXPRESSION, LOYALTYNUMBER_REGULAR_EXPRESSION, 
-        ORDEERNUMBER_REGULAR_EXPRESSION,LOOKUP_EMAIL_REGULAR_EXPRESSION,ACCOUNT_ATTENTION_REGULAR_EXPRESSION
-    }
-    
     public String getName() {
         return name;
     }
@@ -98,8 +98,7 @@ public class RegularExpressionViewHelper implements ServletContextAware {
 	}
 
 	public String getEmail() {
-		System.out.println("Email:"+email);
-        return email;
+		return email;
     }
 	
     public String getAddress() {
@@ -108,10 +107,6 @@ public class RegularExpressionViewHelper implements ServletContextAware {
 
     public String getCity() {
         return city;
-    }
-
-    public String getZipCode() {
-        return zipCode;
     }
 
     public String getPhone() {
@@ -126,5 +121,8 @@ public class RegularExpressionViewHelper implements ServletContextAware {
         return password;
     }
     
-    
+    public String getPostalCode() {
+		return postalCode;
+	}
+
 }

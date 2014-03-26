@@ -1,17 +1,23 @@
 package com.grievance.web.healthcare.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.grievance.web.healthcare.constants.CommonConstants.Action;
+import com.grievance.web.healthcare.util.HelperUtil;
 
 public abstract class BaseController {
 
-	   public abstract String getViewName();
-	   
-	   protected String getFormView(Action action) {
-	        return action.formView();
-	    }
+	@Autowired
+	protected HelperUtil helperUtil;
 
-	    protected String getRedirectView(Action action) {
-	        return action.redirectView();
-	    }
-	  
+	public abstract String getViewName();
+
+	protected String getFormView(Action action) {
+		return action.formView();
+	}
+
+	protected String getRedirectView(Action action) {
+		return action.redirectView();
+	}
+
 }

@@ -1,17 +1,19 @@
 package com.grievance.web.healthcare.beans.common;
 
-public class Address {
+public class Address extends BaseBean {
+
+	private static final long serialVersionUID = 726095313537907831L;
 
 	private String addressLine1;
-	
+
 	private String addressLine2;
-	
+
 	private String city;
-	
-	private String zipCode;
-	
+
+	private String postalCode;
+
 	private String state;
-	
+
 	public String getAddressLine1() {
 		return addressLine1;
 	}
@@ -36,12 +38,12 @@ public class Address {
 		this.city = city;
 	}
 
-	public String getZipCode() {
-		return zipCode;
+	public String getPostalCode() {
+		return postalCode;
 	}
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 
 	public String getState() {
@@ -51,5 +53,20 @@ public class Address {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
+
+	@Override
+	public String toString() {
+	    StringBuilder builder = new StringBuilder();
+		builder.append("Address [addressLine1=");
+		builder.append(addressLine1);
+		builder.append(", addressLine2=");
+		builder.append(addressLine1);
+		builder.append(", city=");
+		builder.append(city);
+		builder.append(", postalCode=");
+		builder.append(postalCode);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

@@ -1,10 +1,8 @@
 package com.grievance.web.healthcare.controller;
 
 import com.grievance.web.healthcare.manager.UserManager;
-import com.grievance.web.healthcare.service.UserService;
 import com.grievance.web.healthcare.viewbean.ProfileVB;
 import com.grievance.web.healthcare.viewbean.SignInVB;
-import com.grievance.web.healthcare.viewbean.UserVB;
 
 import com.grievance.web.healthcare.exception.GenericException;
 
@@ -63,7 +61,7 @@ public class SignInController extends BaseController {
 
     	ProfileVB profileVB = null;
 		System.out.print("Process Signin"+signInVB.getEmail());
-		signInValidator.validateVB(signInVB,result);
+		signInValidator.validatePortalVB(signInVB,result);
 		
 		if (result.hasErrors()) {
 			System.out.print("Errors");

@@ -1,6 +1,6 @@
 package com.grievance.web.healthcare.viewbean;
 
-public class SignInVB {
+public class SignInVB extends BaseVB {
 
     private  String loginName;
     

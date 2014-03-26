@@ -2,26 +2,29 @@ package com.grievance.web.healthcare.viewbean;
 
 import com.grievance.web.healthcare.beans.common.Address;
 import com.grievance.web.healthcare.beans.common.Phone;
+import com.grievance.web.healthcare.beans.common.Profile;
 
 public class ProfileVB extends BaseVB {
 
 	private String email;
-	
+
 	private String loginName;
-	
+
 	private String password;
-	
+
 	private String confirmPassword;
-	
+
 	private String firstName;
-	
+
 	private String lastName;
 
-    private  Address addressVB;
-    
-    private Phone phone;
+	private Profile profile;
 
-    public String getEmail() {
+	private Address address;
+
+	private Phone phone;
+
+	public String getEmail() {
 		return email;
 	}
 
@@ -40,11 +43,11 @@ public class ProfileVB extends BaseVB {
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getConfirmPassword() {
 		return confirmPassword;
 	}
@@ -52,8 +55,8 @@ public class ProfileVB extends BaseVB {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	
-    public String getFirstName() {
+
+	public String getFirstName() {
 		return firstName;
 	}
 
@@ -69,20 +72,27 @@ public class ProfileVB extends BaseVB {
 		this.lastName = lastName;
 	}
 
-	public Address getAddressVB() {
-		return addressVB;
-	}
-
-	public void setAddressVB(Address addressVB) {
-		this.addressVB = addressVB;
-	}
-
 	public Phone getPhone() {
 		return phone;
 	}
 
 	public void setPhone(Phone phone) {
 		this.phone = phone;
-	}	
-    
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Profile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(Profile profile) {
+		this.profile = profile;
+	}
 }

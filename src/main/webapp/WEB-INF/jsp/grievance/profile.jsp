@@ -52,14 +52,12 @@
 				    <form:input id="city" name="city" path="addressVB.city" maxlength="20" /> 
 				    <form:errors path="addressVB.city" cssClass="error" /></br>
 				    
-				    <!--
 				    <form:label  path="addressVB.state" id="addressVB.state">
 		            <c:out value="${icon}" escapeXml="false"></c:out><fmt:message key="profile.userForm.state"/></form:label>
 		            <form:select path="addressVB.state" class="stateDropdown">
 		                <form:option label="Select" value="-1"></form:option>
-		                <form:options items="${userVB.addressVB.states}"></form:options>
+		                <form:options items="${profileVB.states}"></form:options></br>
 		            </form:select>
-		            -->
 		            
 		            <form:label path="addressVB.postalCode" id="addressVB.postalCode">
 		            	<c:out value="${icon}" escapeXml="false"></c:out>

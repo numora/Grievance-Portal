@@ -6,6 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
 import com.grievance.web.healthcare.common.validation.ValidationUtilities;
+import com.grievance.web.healthcare.viewbean.BaseVB;
 import com.grievance.web.healthcare.viewbean.SignInVB;
 
 @Component
@@ -23,9 +24,9 @@ public class SignInVBValidator extends AbstractVBValidator {
 	}
 
 	@Override
-	public void validateVB(Object object, Errors errors) {
-		if (object instanceof SignInVB) {
-			SignInVB signInVB = (SignInVB) object;
+	public void validatePortalVB(BaseVB baseVB, Errors errors) {
+		if (baseVB instanceof SignInVB) {
+			SignInVB signInVB = (SignInVB) baseVB;
 			validate(signInVB, errors);
 		}
 	}
@@ -36,8 +37,6 @@ public class SignInVBValidator extends AbstractVBValidator {
 			return;
 		}
 
-		System.out.println("In Validator");
-		
 		int initialErrorCount = errors.getErrorCount();
 
 		// validate rule: email should not be empty
@@ -76,5 +75,7 @@ public class SignInVBValidator extends AbstractVBValidator {
 			}
 		}
 	}
+
+	
 
 }

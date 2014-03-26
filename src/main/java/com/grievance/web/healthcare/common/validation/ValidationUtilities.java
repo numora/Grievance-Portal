@@ -130,7 +130,7 @@ public class ValidationUtilities {
 	}
 
 	/**
-	 * The method to check given email is in standard format i.e
+	 * The Method To Check given email is in Standard Format i.e
 	 * jane47@macys.com
 	 * 
 	 * @param errors
@@ -345,7 +345,7 @@ public class ValidationUtilities {
 	}
 
 	public boolean isValidZipCode(String zipCode) {
-		return isValid(this.regularExpression.getZipCode(), zipCode, true);
+		return isValid(this.regularExpression.getPostalCode(), zipCode, true);
 	}
 
 	public boolean isValidPassword(String pwd) {
@@ -375,7 +375,7 @@ public class ValidationUtilities {
 
 		CharSequence inputStr = str;
 
-		System.out.println("Valid");
+		System.out.println("In Valid"+expression+"String:"+str);
 		Pattern pattern = null;
 		if (isCaseSensitive) {
 			pattern = Pattern.compile(expression);
