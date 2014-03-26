@@ -1,22 +1,20 @@
 package com.grievance.web.healthcare.newmodel;
 
-
-
-
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "newuser")
+@Table(name = "user")
+@NamedQuery(name="user.findByLoginName", query="from User where login_name = :name and password= :password")
 public class User {
-	
 	
 	private Integer user_id;
 	private String password;
