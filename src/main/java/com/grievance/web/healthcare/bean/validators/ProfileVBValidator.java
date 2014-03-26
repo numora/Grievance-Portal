@@ -25,20 +25,16 @@ public class ProfileVBValidator extends AbstractVBValidator {
 		return ProfileVB.class.isAssignableFrom(clazz);
 	}
 	
-	private ContactValidator contactValidator;
-	
 	private AddressValidator addressValidator;
 	
-	public AddressValidator getAddressValidator() {
-		return addressValidator;
-	}
-
+	private ContactValidator contactValidator;
+	
+	protected ValidationUtilities validationUtilities;
+	
 	@Autowired
 	public void setAddressValidator(AddressValidator addressValidator) {
 		this.addressValidator = addressValidator;
 	}
-
-	protected ValidationUtilities validationUtilities;
 	
 	@Autowired
 	public void setContactValidator(ContactValidator contactValidator) {
@@ -60,7 +56,8 @@ public class ProfileVBValidator extends AbstractVBValidator {
 	}
 	
 	protected void validate(ProfileVB profileVB, Errors errors) {
-    	if (profileVB == null) {
+    	
+		if (profileVB == null) {
             return;
         }
        
@@ -68,7 +65,7 @@ public class ProfileVBValidator extends AbstractVBValidator {
 		
 		validateOtherRules(profileVB,errors);
 		
-		validateNestedObjectsRules(profileVB, errors);
+		//validateNestedObjectsRules(profileVB, errors);
         
     }
 	
