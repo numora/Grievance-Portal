@@ -2,7 +2,7 @@ package com.grievance.web.healthcare.service;
 
 import java.util.List;
 
-import com.grievance.web.healthcare.model.User;
+import com.grievance.web.healthcare.newmodel.User;
 
 public interface UserService {
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.grievance.web.healthcare.model.User;
+import com.grievance.web.healthcare.newmodel.User;
 
 @Component
 @Repository("userService")

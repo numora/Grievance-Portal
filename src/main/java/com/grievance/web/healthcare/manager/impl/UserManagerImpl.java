@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.grievance.web.healthcare.controller.ProfileController;
 import com.grievance.web.healthcare.manager.BaseManager;
 import com.grievance.web.healthcare.manager.UserManager;
-import com.grievance.web.healthcare.model.User;
+import com.grievance.web.healthcare.newmodel.User;
 import com.grievance.web.healthcare.service.UserService;
 import com.grievance.web.healthcare.viewbean.ProfileVB;
 
@@ -39,8 +39,8 @@ public class UserManagerImpl extends BaseManager implements UserManager {
 		User user = userService.checkCredentials(userName, passWord);
 		if(user!=null){
 			userVB = new ProfileVB();
-			userVB.setEmail(user.getEmailAddress());
-			userVB.setFirstName(user.getLoginname());
+			userVB.setEmail(user.getEmail_id());
+			userVB.setFirstName(user.getLogin_name());
 			System.out.println("Email Addres" + userVB.getEmail());
 		}
 		
@@ -60,7 +60,7 @@ public class UserManagerImpl extends BaseManager implements UserManager {
 		User user = new User();
 		user = (User) dozerTransformer.retrieveMap(profileVB,user,null);
 		
-		System.out.println("After Dozzer Map:"+ user.getEmailAddress());
+		System.out.println("After Dozzer Map:"+ user.getEmail_id());
 		
 		if (logger.isDebugEnabled()) {
 			logger.debug("END: createUser()");

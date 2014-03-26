@@ -28,6 +28,7 @@ public class User {
 	private Address address;
 	private String language;
 	private Integer verified;
+	private Integer address_id;
 	
 	@Id
 	@Column(name = "user_id", unique = true, nullable = false)
@@ -109,6 +110,14 @@ public class User {
 	}
 	public void setVerified(Integer verified) {
 		this.verified = verified;
+	}
+	
+	@Column(name = "address_id")
+	public Integer getAddress_id() {
+		return address_id;
+	}
+	public void setAddress_id(Integer address_id) {
+		this.address_id = address_id;
 	}
 	
 }
