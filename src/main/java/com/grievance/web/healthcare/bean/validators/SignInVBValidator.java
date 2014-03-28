@@ -39,15 +39,10 @@ public class SignInVBValidator extends AbstractVBValidator {
 
 		int initialErrorCount = errors.getErrorCount();
 
-		// validate rule: email should not be empty
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "email.required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "loginName", "loginName.required");
 
-		// validate rule: password should not be empty
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
-				"password.required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password","password.required");
 		
-		System.out.println("In Validator"+errors.getErrorCount());
-
 		// If email and password not empty then check for other validations
 		if (errors.getErrorCount() == initialErrorCount) {
 			// validateOtherRules(signInVB, errors, initialErrorCount);

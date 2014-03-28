@@ -6,6 +6,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -25,6 +27,7 @@ public class Address {
 	
 	@Id
 	@Column(name = "address_id", unique = true, nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Integer getAddress_id() {
 		return address_id;
 	}
@@ -78,6 +81,12 @@ public class Address {
 	}
 	public void setPo_box(String po_box) {
 		this.po_box = po_box;
+	}
+	
+	public String toString(){
+		return "address_id: "+address_id+"address_line_1: "+address_line_1+"address_line_2: "+address_line_2+
+			"zip: "+zip+"city: "+city+"state: "+state;
+				
 	}
 	
 }

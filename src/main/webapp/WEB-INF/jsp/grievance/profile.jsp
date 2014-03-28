@@ -34,37 +34,37 @@
 				    <form:input id="loginName" name="loginName" path="loginName" maxlength="20" /> 
 				    <form:errors path="loginName" cssClass="error" /></br>
 				    
-				    <form:label path="addressVB.addressLine1" id="addressVB.addressLine1">
+				    <form:label path="address.addressLine1" id="address.addressLine1">
 				    	<fmt:message key="profile.userForm.addressline1"/>
 					</form:label>
-				    <form:input id="addressVB.addressLine1" name="addressline1" path="addressVB.addressLine1" maxlength="20" /> 
-				    <form:errors path="addressVB.addressLine1" cssClass="error" /></br>
+				    <form:input id="address.addressLine1" name="addressline1" path="address.addressLine1" maxlength="20" /> 
+				    <form:errors path="address.addressLine1" cssClass="error" /></br>
 				    
-				    <form:label path="addressVB.addressLine2" id="addressVB.addressLine2">
+				    <form:label path="address.addressLine2" id="address.addressLine2">
 				    	<fmt:message key="profile.userForm.addressline2"/>
 					</form:label>
-				    <form:input id="addressVB.addressLine2" name="addressline2" path="addressVB.addressLine2" maxlength="20" /> 
-				    <form:errors path="addressVB.addressLine2" cssClass="error" /></br>
+				    <form:input id="address.addressLine2" name="addressline2" path="address.addressLine2" maxlength="20" /> 
+				    <form:errors path="address.addressLine2" cssClass="error" /></br>
 				    
-				    <form:label path="addressVB.city" id="addressVB.city">
+				    <form:label path="address.city" id="address.city">
 				    	<fmt:message key="profile.userForm.city"/>
 					</form:label>
-				    <form:input id="city" name="city" path="addressVB.city" maxlength="20" /> 
-				    <form:errors path="addressVB.city" cssClass="error" /></br>
+				    <form:input id="city" name="city" path="address.city" maxlength="20" /> 
+				    <form:errors path="address.city" cssClass="error" /></br>
 				    
-				    <form:label  path="addressVB.state" id="addressVB.state">
+				    <form:label  path="address.state" id="address.state">
 		            <c:out value="${icon}" escapeXml="false"></c:out><fmt:message key="profile.userForm.state"/></form:label>
-		            <form:select path="addressVB.state" class="stateDropdown">
+		            <form:select path="address.state" class="stateDropdown">
 		                <form:option label="Select" value="-1"></form:option>
 		                <form:options items="${profileVB.states}"></form:options></br>
 		            </form:select>
 		            
-		            <form:label path="addressVB.postalCode" id="addressVB.postalCode">
+		            <form:label path="address.postalCode" id="address.postalCode">
 		            	<c:out value="${icon}" escapeXml="false"></c:out>
 				    	<fmt:message key="profile.userForm.postalCode"/>
 				    </form:label>
-				    <form:input id="addressVB.postalCode" name="addressVB.postalCode" path="addressVB.postalCode" maxlength="20" /> 
-				    <form:errors path="addressVB.postalCode" cssClass="error" /></br>
+				    <form:input id="address.postalCode" name="address.postalCode" path="address.postalCode" maxlength="20" /> 
+				    <form:errors path="address.postalCode" cssClass="error" /></br>
 		            
 		            <button type="submit" id="submit" name="createProfile"><span>Create Profile</span></button>
 				    

@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -30,6 +32,7 @@ public class User {
 	
 	@Id
 	@Column(name = "user_id", unique = true, nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Integer getUser_id() {
 		return user_id;
 	}
@@ -116,6 +119,12 @@ public class User {
 	}
 	public void setAddress_id(Integer address_id) {
 		this.address_id = address_id;
+	}
+	
+	public String toString(){
+
+	return "password: "+password+"email_id: "+email_id+"role_id: "+role_id+
+			"login_name: "+login_name;
 	}
 	
 }

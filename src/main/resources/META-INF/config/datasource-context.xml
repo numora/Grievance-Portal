@@ -52,9 +52,12 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.bytecode.use_reflection_optimizer">false</prop>
+                <!-- 
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <!-- <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>-->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                 -->
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                
                 <prop key="hibernate.show_sql">true</prop>
                 
             </props>

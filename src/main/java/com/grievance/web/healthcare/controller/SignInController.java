@@ -3,9 +3,8 @@ package com.grievance.web.healthcare.controller;
 import com.grievance.web.healthcare.manager.UserManager;
 import com.grievance.web.healthcare.viewbean.ProfileVB;
 import com.grievance.web.healthcare.viewbean.SignInVB;
-
 import com.grievance.web.healthcare.exception.GenericException;
-
+import com.grievance.web.healthcare.bean.validators.ProfileVBValidator;
 import com.grievance.web.healthcare.bean.validators.SignInVBValidator;
 import com.grievance.web.healthcare.constants.CommonConstants.Action;
 
@@ -14,6 +13,8 @@ import static com.grievance.web.healthcare.constants.CommonConstants.SIGN_IN_MOD
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/signin")
 public class SignInController extends BaseController {
 
+	static final Logger logger = LoggerFactory.getLogger(SignInController.class);
+	
 	public static final String VIEW_NAME = "signin";
 	
 	public static final String MODEL_ATTRIBUTE_NAME = "signInVB";
@@ -59,8 +62,10 @@ public class SignInController extends BaseController {
 			BindingResult result, HttpServletRequest request,
 			HttpServletResponse response) throws GenericException {
 
+    	logger.debug("In Process Signin ");
     	ProfileVB profileVB = null;
-		System.out.print("Process Signin"+signInVB.getEmail());
+    	
+		System.out.print("Process Signin"+signInVB.getLoginName());
 		signInValidator.validatePortalVB(signInVB,result);
 		
 		if (result.hasErrors()) {
@@ -69,9 +74,9 @@ public class SignInController extends BaseController {
 		}
 
 		try {
-			profileVB = userManager.getUserDetails(signInVB.getEmail(),signInVB.getPassword());
+			profileVB = userManager.getUserDetails(signInVB.getLoginName(),signInVB.getPassword());
             if(profileVB!= null){
-            	System.out.println("User Successfully Logined"+ profileVB.getEmail());
+            	System.out.println("User Successfully Logined"+ profileVB.getLastName());
             	return getFormView(Action.Success);
             }
 		} catch (Exception ex) {
@@ -79,6 +84,6 @@ public class SignInController extends BaseController {
 					"Exception occurred while processing authenticateUser in SignInController",
 					ex);
 		}
-		return getFormView(Action.Success);
+		return getFormView(Action.SignIn);
 	}
 }

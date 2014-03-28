@@ -4,10 +4,10 @@
     
     <mapping map-null="false" map-empty-string="false">
         <class-a>com.grievance.web.healthcare.viewbean.ProfileVB</class-a>
-        <class-b>com.grievance.web.healthcare.model.User</class-b>
+        <class-b>com.grievance.web.healthcare.newmodel.User</class-b>
         <field>
             <a>email</a>
-            <b>emailAddress</b>
+            <b>email_id</b>
         </field>
         <field>
             <a>password</a>
@@ -15,8 +15,40 @@
         </field>
         <field>
             <a>loginName</a>
-            <b>loginname</b>
+            <b>login_name</b>
         </field>
+         <field>
+            <a>address</a>
+            <b>address</b>
+        </field>
+      </mapping>
+      
+      
+      
+      <mapping map-null="false" map-empty-string="false">
+        <class-a>com.grievance.web.healthcare.beans.common.Address</class-a>
+        <class-b>com.grievance.web.healthcare.newmodel.Address</class-b>
+        <field>
+            <a>addressLine1</a>
+            <b>address_line_1</b>
+        </field>
+         <field>
+            <a>addressLine2</a>
+            <b>address_line_2</b>
+        </field>
+         <field>
+            <a>city</a>
+            <b>city</b>
+        </field>
+         <field>
+            <a>postalCode</a>
+            <b>zip</b>
+        </field>
+         <field>
+            <a>state</a>
+            <b>state</b>
+        </field>
+           
       </mapping>
 
  </mappings>

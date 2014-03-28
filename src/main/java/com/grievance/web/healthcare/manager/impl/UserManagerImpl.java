@@ -62,6 +62,9 @@ public class UserManagerImpl extends BaseManager implements UserManager {
 		
 		System.out.println("After Dozzer Map:"+ user.getEmail_id());
 		
+		System.out.println("After Dozzer Map:"+ user);
+		
+		isProfileCreated=userService.createUser(user);
 		if (logger.isDebugEnabled()) {
 			logger.debug("END: createUser()");
 		}

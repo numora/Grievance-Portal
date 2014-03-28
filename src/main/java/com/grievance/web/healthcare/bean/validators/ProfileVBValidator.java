@@ -63,7 +63,7 @@ public class ProfileVBValidator extends AbstractVBValidator {
        
     	validateRequiredRules(profileVB,errors);
 		
-		validateOtherRules(profileVB,errors);
+		// validateOtherRules(profileVB,errors);
 		
 		//validateNestedObjectsRules(profileVB, errors);
         
@@ -76,13 +76,15 @@ public class ProfileVBValidator extends AbstractVBValidator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password","password.required");
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword","confirmPassword.required");
+		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "loginName","loginName.required");
 
 	}
 
 	private void validateOtherRules(ProfileVB profileVB, Errors errors) {
 
 		validationUtilities.rejectIfNotEmail(errors, "email", "invalid");
-
+		
 		validationUtilities.rejectIfNotPassword(errors, "password", "invalid");
 
 	}

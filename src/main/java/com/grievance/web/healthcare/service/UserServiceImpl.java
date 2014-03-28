@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.grievance.web.healthcare.newmodel.Address;
 import com.grievance.web.healthcare.newmodel.User;
 
 @Component
@@ -17,8 +18,11 @@ public class UserServiceImpl extends HibernateDaoSupport implements UserService 
     @Override
     @Transactional
     public boolean createUser (User user){
-       boolean status;
+       boolean status=false;
         try {
+        	Address address=user.getAddress();
+            getHibernateTemplate().save(address);
+            user.setAddress_id(address.getAddress_id());
             getHibernateTemplate().save(user);
             status=true;
         } catch (Exception e) {

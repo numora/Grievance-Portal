@@ -10,11 +10,11 @@
 		<div>
 			<spring:bind path="signInVB.*">
 				<form:form modelAttribute="signInVB" id="signInForm" method="POST">
-					<form:label path="email" id="email">
-						<fmt:message key="signin.userForm.emailAddress"/>
+					<form:label path="loginName" id="loginName">
+						<fmt:message key="signin.userForm.loginName"/>
 					</form:label>
-				    <form:input id="email" name="email" path="email" maxlength="20" /> 
-				    <form:errors path="email" cssClass="error" /></br>
+				    <form:input id="loginName" name="loginName" path="loginName" maxlength="20" /> 
+				    <form:errors path="loginName" cssClass="error" /></br>
 				    <form:label path="password" id="password">
 				    	<fmt:message key="signin.userForm.password"/>
 					</form:label>
