@@ -23,6 +23,71 @@
         </field>
       </mapping>
       
+    <mapping map-null="false" map-empty-string="false">
+        <class-a>com.grievance.web.healthcare.viewbean.GrievanceVB</class-a>
+        <class-b>com.grievance.web.healthcare.newmodel.Grievance</class-b>
+        <field>
+            <a>grievanceType</a>
+            <b>grievance_type</b>
+        </field>
+        <field>
+            <a>SSN</a>
+            <b>ssn</b>
+        </field>
+        <field>
+            <a>contactEmail</a>
+            <b>contact_email</b>
+        </field>
+         <field>
+            <a>contactPhone</a>
+            <b>contact_cell</b>
+        </field>
+        <field>
+            <a>licenseType</a>
+            <b>license_type</b>
+        </field>
+        <field>
+            <a>licenseNumber</a>
+            <b>license_number</b>
+        </field>
+        <field>
+            <a>licenseExpDate</a>
+            <b>lic_exp_date</b>
+        </field>
+         <field>
+            <a>npi</a>
+            <b>npi</b>
+        </field>
+        <field>
+            <a>taxId</a>
+            <b>tax_id</b>
+        </field>
+        <field>
+            <a>exclusionCode</a>
+            <b>exclusion_code</b>
+        </field>
+        <field>
+            <a>exclusionDesc</a>
+            <b>exclusion_desc</b>
+        </field>
+         <field>
+            <a>exclusionDate</a>
+            <b>exclusion_date</b>
+        </field>
+        <field>
+            <a>taxonomy</a>
+            <b>taxonomy</b>
+        </field>
+         <field>
+            <a>memberVB</a>
+            <b>member</b>
+        </field>
+         <field>
+            <a>fedMemberVB</a>
+            <b>fedmember</b>
+        </field>
+      </mapping>
+      
       
       
       <mapping map-null="false" map-empty-string="false">
@@ -47,6 +112,40 @@
          <field>
             <a>state</a>
             <b>state</b>
+        </field>
+           
+      </mapping>
+      
+      <mapping map-null="false" map-empty-string="false">
+        <class-a>com.grievance.web.healthcare.viewbean.MemberVB</class-a>
+        <class-b>com.grievance.web.healthcare.newmodel.Member</class-b>
+        <field>
+            <a>firstName</a>
+            <b>first_name</b>
+        </field>
+         <field>
+            <a>lastName</a>
+            <b>last_name</b>
+        </field>
+         <field>
+            <a>middleInitial</a>
+            <b>middle_initial</b>
+        </field>
+         <field>
+            <a>suffix</a>
+            <b>suffix</b>
+        </field>
+         <field>
+            <a>phone</a>
+            <b>phone</b>
+        </field>
+        <field>
+            <a>providerId</a>
+            <b>provider_id</b>
+        </field>
+        <field>
+            <a>address</a>
+            <b>address</b>
         </field>
            
       </mapping>

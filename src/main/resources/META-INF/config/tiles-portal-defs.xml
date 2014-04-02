@@ -44,5 +44,13 @@
 	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/profile.jsp"/>
 	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
    	</definition>
+   	
+		<!--  Registration Page  -->	
+	<definition name="createGrievance"            	extends="portalLayout">
+	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/grievance.jsp"/>
+	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
+   	</definition>
 
 </tiles-definitions>

@@ -27,6 +27,7 @@ public interface CommonConstants {
 		Success,
 		Registration,
 		CreateProfile,
+		CreateGrievance,
 		EditAccount,
 		ViewAccount,
 		ResetPassword;

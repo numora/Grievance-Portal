@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -119,6 +121,15 @@ public class User {
 	}
 	public void setAddress_id(Integer address_id) {
 		this.address_id = address_id;
+	}
+	@PrePersist
+	protected void onCreate() {
+		created_date = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		last_modified_date = new Date();
 	}
 	
 	public String toString(){

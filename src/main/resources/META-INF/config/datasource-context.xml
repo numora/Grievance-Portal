@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:util="http://www.springframework.org/schema/util"
-	xmlns:jee="http://www.springframework.org/schema/jee"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/mvc 
@@ -22,56 +18,61 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd">
 
-    <tx:annotation-driven />
-   
-<!--     <bean id="dataSource" -->
-<!--              class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--             <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
-<!--             <property name="url" value="jdbc:mysql://11.48.176.144:3306/anil" /> -->
-<!--             <property name="username" value="root" /> -->
-<!--             <property name="password" value="db2acce5s" /> -->
-<!--     </bean> -->
-   
-   <!-- Creates a data source that can provide a connection to in-memory embedded 
+	<tx:annotation-driven />
+
+	<!-- <bean id="dataSource" -->
+	<!-- class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+	<!-- <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+	<!-- <property name="url" value="jdbc:mysql://11.48.176.144:3306/anil" /> -->
+	<!-- <property name="username" value="root" /> -->
+	<!-- <property name="password" value="db2acce5s" /> -->
+	<!-- </bean> -->
+
+	<!-- Creates a data source that can provide a connection to in-memory embedded 
 		HSQL database populated with test data see: http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/ch12s08.html -->
 
 	<jdbc:embedded-database id="dataSource">
 		<jdbc:script location="classpath:dbschemas/grievance_new_schema.sql" />
 		<jdbc:script location="classpath:dbschemas/test-data.sql" />
 	</jdbc:embedded-database>
-	
-    <bean id="sessionFactory"
-        class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"  >
-        <property name="dataSource" ref="dataSource" />
-        <property name="annotatedClasses">
-            <list>
-                <value>com.grievance.web.healthcare.newmodel.User</value>
-                <value>com.grievance.web.healthcare.newmodel.Address</value>
-            </list>
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.bytecode.use_reflection_optimizer">false</prop>
-                <!-- 
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
-                 -->
-                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-                
-                <prop key="hibernate.show_sql">true</prop>
-                
-            </props>
-        </property>
-    </bean>
-    
-    <bean id="transactionManager"
-        class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
 
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-    
-    <bean name="userService" class="com.grievance.web.healthcare.service.UserServiceImpl">
-       <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.grievance.web.healthcare.newmodel.User</value>
+				<value>com.grievance.web.healthcare.newmodel.Address</value>
+				<value>com.grievance.web.healthcare.newmodel.Grievance</value>
+				<value>com.grievance.web.healthcare.newmodel.Member</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.bytecode.use_reflection_optimizer">false</prop>
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+					<prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+
+				<prop key="hibernate.show_sql">true</prop>
+
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<bean name="userService" class="com.grievance.web.healthcare.service.UserServiceImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean name="grievanceService"
+		class="com.grievance.web.healthcare.service.GrievanceServiceImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 </beans:beans>

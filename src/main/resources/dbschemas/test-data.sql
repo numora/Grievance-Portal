@@ -17,3 +17,7 @@ INSERT INTO USER
 	(USER_ID, PASSWORD, EMAIL_ID, LAST_MODIFIED_DATE, LOGIN_NAME, CREATED_DATE, VERIFIED, ROLE_ID, DOB, "LANGUAGE", ADDRESS_ID)
 VALUES 
 	(3, '1234', 'test3@test.com','2014-01-01 14:49:01' , 'test3','2014-01-01 14:49:01' , 'Y', 1, '2014-01-01 14:49:01', 'english',1);
+	
+	insert into provider(provider_id,provier_name,provider_speciality,provider_type) values (1,'sujan','sujan','sujan');
+	insert into member(member_id,first_name,last_name,middle_initial,suffix,phone,address_id,provider_id) values (1,'sujan','kumar','v','v','4159909362',1,1)
+	
