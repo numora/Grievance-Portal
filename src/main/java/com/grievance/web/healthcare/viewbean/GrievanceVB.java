@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class GrievanceVB {
 
+	private int grievanceId;
 	private int grievanceType;
 	private String SSN;
 	private String contactEmail;
@@ -75,6 +76,14 @@ public class GrievanceVB {
 
 	public void setLicenseExpDate(Date licenseExpDate) {
 		this.licenseExpDate = licenseExpDate;
+	}
+
+	public int getGrievanceId() {
+		return grievanceId;
+	}
+
+	public void setGrievanceId(int grievanceId) {
+		this.grievanceId = grievanceId;
 	}
 
 	public long getNpi() {

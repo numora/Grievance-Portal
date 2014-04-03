@@ -17,6 +17,7 @@ public interface CommonConstants {
     
     String FORM_VIEW_SUFFIX = "FormView";
     String REDIRECT_VIEW_SUFFIX="RedirectView";
+    String SUCCESS_VIEW_SUFFIX="SuccessView";
     
     String NULL_VALUE = "null";
     String CM_CODE = ".cmcode";
@@ -28,6 +29,7 @@ public interface CommonConstants {
 		Registration,
 		CreateProfile,
 		CreateGrievance,
+		TrackGrievance,
 		EditAccount,
 		ViewAccount,
 		ResetPassword;
@@ -35,6 +37,11 @@ public interface CommonConstants {
 		public String formView() {
 			return (new StringBuilder()).append(this.name()).append(
 					FORM_VIEW_SUFFIX).toString();
+		}
+		
+		public String SuccessView() {
+			return (new StringBuilder()).append(this.name()).append(
+					SUCCESS_VIEW_SUFFIX).toString();
 		}
 
 		public String redirectView() {

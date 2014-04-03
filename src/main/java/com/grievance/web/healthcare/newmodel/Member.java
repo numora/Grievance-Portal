@@ -35,7 +35,7 @@ public class Member {
 		this.member_id = member_id;
 	}
 
-	@Column(name = "grievance_type", nullable = false)
+	@Column(name = "first_name", nullable = false)
 	public String getFirst_name() {
 		return first_name;
 	}

@@ -8,7 +8,7 @@
 <div id="container">
 		    <div id="content">
 		   		 <div>
-				   	Welcome To The Portal.
+				   You have successfully created your profile.
 		    	</div>
 		    	</div>
 		    </div>

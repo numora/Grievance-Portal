@@ -4,4 +4,5 @@ import com.grievance.web.healthcare.newmodel.Grievance;
 
 public interface GrievanceService {
 	public boolean createGrievance(Grievance grievance) ;
+	public Grievance trackGrievance(Grievance grievance);
 }

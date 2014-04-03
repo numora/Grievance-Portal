@@ -16,7 +16,7 @@
    	
    	<!--  Portal Layout Definition -->
     <definition name="portalLayout"   				template="/WEB-INF/jsp/grievance/grievancelayout.jsp">
-   	    <put-attribute name="skipToContentLink" 	value="true" />
+   	    <put-attribute name="skipToContentLink" 	value="true"/>
         <put-attribute name="header"                value="/WEB-INF/jsp/common/header.jsp" />
         <put-attribute name="footer"                value="/WEB-INF/jsp/common/footer.jsp" />
     </definition>
@@ -50,6 +50,27 @@
 	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
 	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
 	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/grievance.jsp"/>
+	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
+   	</definition>
+   	
+	<definition name="createGrievanceSuccess"            	extends="portalLayout">
+	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/grievancesuccess.jsp"/>
+	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
+   	</definition>
+   	
+	<definition name="trackGrievance"            	extends="portalLayout">
+	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/trackgrievance.jsp"/>
+	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
+   	</definition>
+   	
+	<definition name="trackGrievanceSuccess"            	extends="portalLayout">
+	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/trackgrievancesuccess.jsp"/>
 	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
    	</definition>
 

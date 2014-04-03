@@ -1,5 +1,6 @@
 package com.grievance.web.healthcare.service;
 
+import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.grievance.web.healthcare.newmodel.Address;
 import com.grievance.web.healthcare.newmodel.Grievance;
 import com.grievance.web.healthcare.newmodel.Member;
+import com.grievance.web.healthcare.newmodel.User;
 
 @Component
 @Repository("grievanceService")
@@ -43,5 +45,17 @@ public class GrievanceServiceImpl extends HibernateDaoSupport implements
 			status = false;
 		}
 		return status;
+	}
+
+	public Grievance trackGrievance(Grievance grievance) {
+
+		System.out.print("Retrieving Grievance Details ");
+		Query query = getSession().getNamedQuery("grievance.trackGrievnace");
+		query.setInteger("grievanceId", grievance.getGrievance_id());
+		query.setString("email", grievance.getContact_email());
+		query.setString("ssn", grievance.getSsn());
+		Grievance trackgrievance = (Grievance) query.uniqueResult();
+		return trackgrievance;
+
 	}
 }

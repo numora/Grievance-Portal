@@ -31,9 +31,7 @@
 	    		<tiles:insertAttribute name="navigation" />
 			</div>
 		</div>
-		 <div id="body">
-			    <tiles:insertAttribute name="body" />
-		 </div>
+		 <div id="body"><tiles:insertAttribute name="body"/></div>
 		 <div id="footer_container">
 			    <tiles:insertAttribute name="footer" />
 		 </div>

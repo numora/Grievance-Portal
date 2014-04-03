@@ -68,7 +68,7 @@ public class CreateGrievanceController extends BaseController {
 	}
 
 	@RequestMapping(params = "createGrievance", method = RequestMethod.POST)
-	public String createProfile(
+	public String createGrievance(
 			@ModelAttribute(GRIEVANCE_MODEL_ATTRIBUTE_NAME) GrievanceVB grievanceVB,
 			BindingResult result, HttpServletRequest request,
 			HttpServletResponse response) throws GenericException {
@@ -83,13 +83,13 @@ public class CreateGrievanceController extends BaseController {
 		}
 
 		try {
-			grievanceManager.createGrievance(grievanceVB);
+			grievanceVB = grievanceManager.createGrievance(grievanceVB);
 		} catch (Exception ex) {
 			throw new GenericException(
 					"Exception occurred while Creating Grievance In CreateGrievanceController",
 					ex);
 		}
-		return "";
+		return getSuccessView(Action.CreateGrievance);
 	}
 
 }

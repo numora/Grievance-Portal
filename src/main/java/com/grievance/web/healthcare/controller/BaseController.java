@@ -15,6 +15,10 @@ public abstract class BaseController {
 	protected String getFormView(Action action) {
 		return action.formView();
 	}
+	
+	protected String getSuccessView(Action action) {
+		return action.SuccessView();
+	}
 
 	protected String getRedirectView(Action action) {
 		return action.redirectView();

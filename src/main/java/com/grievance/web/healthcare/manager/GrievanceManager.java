@@ -4,5 +4,6 @@ import com.grievance.web.healthcare.viewbean.GrievanceVB;
 
 public interface GrievanceManager {
 
-	boolean createGrievance(GrievanceVB grievanceVB);
+	GrievanceVB createGrievance(GrievanceVB grievanceVB);
+	public GrievanceVB trackGrievance(GrievanceVB grievanceVB);
 }
