@@ -23,6 +23,8 @@ public class ProfileVB extends BaseVB {
 	private Address address;
 
 	private Phone phone;
+	
+	private int activateId;
 
 	public String getEmail() {
 		return email;
@@ -94,5 +96,13 @@ public class ProfileVB extends BaseVB {
 
 	public void setProfile(Profile profile) {
 		this.profile = profile;
+	}
+
+	public int getActivateId() {
+		return activateId;
+	}
+
+	public void setActivateId(int activateId) {
+		this.activateId = activateId;
 	}
 }

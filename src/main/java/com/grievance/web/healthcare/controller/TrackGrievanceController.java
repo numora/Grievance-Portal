@@ -1,13 +1,13 @@
 
 /**************************************************************************
 	 *
-	 * Name: CreateGrievanceController.java
+	 * Name: TrackGrievanceController.java
 	 *
 	 * Created By: 
 	 *
 	 * Project Name: Grievance Portal
 	 *
-	 * Description: To Handle the Creation of Grievance 
+	 * Description: To track any  Grievance 
 	 *
 	 *************************************************************************/
 package com.grievance.web.healthcare.controller;

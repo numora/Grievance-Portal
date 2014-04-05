@@ -8,4 +8,6 @@ public interface UserManager {
 	
 	boolean createProfile(ProfileVB profileVB);
 	
+	boolean activateProfile(ProfileVB profileVB);
+	
 }

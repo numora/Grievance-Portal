@@ -15,7 +15,7 @@
 		<!-- Web fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Chela+One|Crushed|Open+Sans:400,600' rel='stylesheet' type='text/css'>
 		<!-- CSS styles -->
-		<link rel="stylesheet" type="text/css" href="css/app_main.css">
+		<link rel="stylesheet" type="text/css" href="/css/app_main.css">
 		<style type = "text/css">
 		</style>
 		<!-- JavaScript -->

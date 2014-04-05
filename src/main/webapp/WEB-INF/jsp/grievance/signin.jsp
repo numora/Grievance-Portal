@@ -14,14 +14,14 @@
 						<fmt:message key="signin.userForm.loginName"/>
 					</form:label>
 				    <form:input id="loginName" name="loginName" path="loginName" maxlength="20" /> 
-				    <form:errors path="loginName" cssClass="error" /></br>
+				    <form:errors path="loginName" cssClass="error" /><br>
 				    <form:label path="password" id="password">
 				    	<fmt:message key="signin.userForm.password"/>
 					</form:label>
 				    <form:password id="password" name="password" path="password" maxlength="20" /> 
-				    <form:errors path="password" cssClass="error" /></br>
+				    <form:errors path="password" cssClass="error" /><br>
 				    <button type="submit" id="submit" name="processSignIn"><span>SignIn</span></button>
-				    <a href="#" id="forgotPassword">forgot password?</a>
+				    <a href="/grievance/grievance/forgotPassword" id="forgotPassword">forgot password?</a>
 				</form:form>
 			</spring:bind>
 		</div>

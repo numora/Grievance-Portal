@@ -26,10 +26,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/signin")
 public class SignInController extends BaseController {
 
-	static final Logger logger = LoggerFactory.getLogger(SignInController.class);
-	
+	static final Logger logger = LoggerFactory
+			.getLogger(SignInController.class);
+
 	public static final String VIEW_NAME = "signin";
-	
+
 	public static final String MODEL_ATTRIBUTE_NAME = "signInVB";
 
 	public String getViewName() {
@@ -38,48 +39,56 @@ public class SignInController extends BaseController {
 
 	@Autowired
 	private SignInVBValidator signInValidator;
-	
+
 	@Autowired
 	private UserManager userManager;
 
-    @ModelAttribute(MODEL_ATTRIBUTE_NAME)
-    public SignInVB buildModel() {
-        return new SignInVB();
-    }
+	@ModelAttribute(MODEL_ATTRIBUTE_NAME)
+	public SignInVB buildModel() {
+		return new SignInVB();
+	}
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String setupSignInForm(
-            @ModelAttribute(MODEL_ATTRIBUTE_NAME) SignInVB signInVB,
-            HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
-    	  System.out.println("In Sign in Controller");
-          return getFormView(Action.SignIn);
-    }
+	@RequestMapping(method = RequestMethod.GET)
+	public String setupSignInForm(
+			@ModelAttribute(MODEL_ATTRIBUTE_NAME) SignInVB signInVB,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		System.out.println("In Sign in Controller");
+		return getFormView(Action.SignIn);
+	}
 
-    @RequestMapping(params = "processSignIn", method = RequestMethod.POST)
+	@RequestMapping(params = "processSignIn", method = RequestMethod.POST)
 	public String processSignIn(
 			@ModelAttribute(SIGN_IN_MODEL_ATTRIBUTE_NAME) SignInVB signInVB,
 			BindingResult result, HttpServletRequest request,
 			HttpServletResponse response) throws GenericException {
 
-    	logger.debug("In Process Signin ");
-    	ProfileVB profileVB = null;
-    	
-		System.out.print("Process Signin"+signInVB.getLoginName());
-		signInValidator.validatePortalVB(signInVB,result);
-		
+		logger.debug("In Process Signin ");
+		ProfileVB profileVB = null;
+
+		System.out.print("Process Signin" + signInVB.getLoginName());
+		signInValidator.validatePortalVB(signInVB, result);
+		request.getSession(true).setAttribute("signedIn", 0);
 		if (result.hasErrors()) {
 			System.out.print("Errors");
 			return getFormView(Action.SignIn);
 		}
 
 		try {
-			profileVB = userManager.getUserDetails(signInVB.getLoginName(),signInVB.getPassword());
-            if(profileVB!= null){
-            	System.out.println("User Successfully Logined"+ profileVB.getLastName());
-            	return getFormView(Action.Success);
-            }
+			profileVB = userManager.getUserDetails(signInVB.getLoginName(),
+					signInVB.getPassword());
+			if (profileVB != null) {
+				System.out.println("User Successfully Logined"
+						+ profileVB.getLastName());
+				request.getSession(true).setAttribute("signedIn", 1);
+				signInVB.setSignedIn((Integer) request.getSession().getAttribute("signedIn"));
+				return getFormView(Action.GrievanceHome);
+			}
+			if (profileVB==null){
+				
+			}
 		} catch (Exception ex) {
+			request.getSession(true).setAttribute("signedIn", 0);
 			throw new GenericException(
 					"Exception occurred while processing authenticateUser in SignInController",
 					ex);

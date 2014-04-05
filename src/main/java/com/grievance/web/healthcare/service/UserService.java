@@ -16,5 +16,7 @@ public interface UserService {
 	 
 	 public boolean deleteUser(User user);
 	 
+	 public boolean activateUser(User user) ;
+	 
 	 
 }

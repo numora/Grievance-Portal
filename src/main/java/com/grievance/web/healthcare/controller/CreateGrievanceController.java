@@ -24,11 +24,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.grievance.web.healthcare.bean.validators.GrievanceVBValidator;
 import com.grievance.web.healthcare.constants.CommonConstants.Action;
 import com.grievance.web.healthcare.exception.GenericException;
 import com.grievance.web.healthcare.manager.GrievanceManager;
 import com.grievance.web.healthcare.viewbean.GrievanceVB;
-import com.grievance.web.healthcare.viewbean.ProfileVB;
 
 @Controller
 @RequestMapping("/createGrievance")
@@ -38,9 +38,8 @@ public class CreateGrievanceController extends BaseController {
 	public static final String VIEW_NAME = "createGrievance";
 	public static final String GRIEVANCE_MODEL_ATTRIBUTE_NAME = "grievanceVB";
 
-	/*
-	 * @Autowired private ProfileVBValidator profileValidator;
-	 */
+	@Autowired
+	private GrievanceVBValidator grievanceVBValidator;
 
 	@Autowired
 	private GrievanceManager grievanceManager;
@@ -76,7 +75,7 @@ public class CreateGrievanceController extends BaseController {
 		logger.debug("START: Create Grievance" + grievanceVB.toString());
 		System.out.println("In Create Grievance Controller");
 
-		// profileValidator.validatePortalVB(profileVB,result);
+		grievanceVBValidator.validatePortalVB(grievanceVB,result);
 
 		if (result.hasErrors()) {
 			return getFormView(Action.CreateGrievance);

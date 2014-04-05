@@ -29,11 +29,35 @@
 	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
    	</definition>
    	
+	 <!--  SignIn Page  -->	
+	<definition name="forgotPassword"            		    extends="portalLayout">
+	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/forgotPassword.jsp"/>
+	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
+   	</definition>
+   	
+	 <!--  SignIn Page  -->	
+	<definition name="forgotPasswordSuccess"            		    extends="portalLayout">
+	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/forgotPasswordSuccess.jsp"/>
+	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
+   	</definition>
+   	
    	 <!--  Welcome Page  -->	
 	<definition name="success"            		    extends="portalLayout">
 	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
 	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
-	    <put-attribute name="body"   				value="/WEB-INF/jsp/common/success.jsp"/>
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/success.jsp"/>
+	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
+   	</definition>
+   	
+	 <!--  Welcome Page  -->	
+	<definition name="activatesuccess"            		    extends="portalLayout">
+	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
+	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/activatesuccess.jsp"/>
 	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
    	</definition>
    	

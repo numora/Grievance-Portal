@@ -2,7 +2,7 @@ package com.grievance.web.healthcare.viewbean;
 
 import java.util.Date;
 
-public class GrievanceVB {
+public class GrievanceVB extends BaseVB {
 
 	private int grievanceId;
 	private int grievanceType;

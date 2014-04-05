@@ -1,15 +1,3 @@
-/**************************************************************************
- *
- * Name: ProfileController.java
- *
- * Created By: 
- *
- * Project Name: Grievance Portal
- *
- * Description: To Handle the Creation of Profile 
- *
- *************************************************************************/
-
 package com.grievance.web.healthcare.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,15 +20,15 @@ import com.grievance.web.healthcare.util.MailUtilImpl;
 import com.grievance.web.healthcare.viewbean.ProfileVB;
 
 @Controller
-@RequestMapping("/createProfile")
-public class ProfileController extends BaseController {
+@RequestMapping("/forgotPassword")
+public class ForgotPasswordController extends BaseController {
 
-	static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
-
-	public static final String VIEW_NAME = "createProfile";
+	static final Logger logger = LoggerFactory
+			.getLogger(ForgotPasswordController.class);
+	public static final String VIEW_NAME = "forgotPassword";
 
 	public static final String PROFILE_MODEL_ATTRIBUTE_NAME = "profileVB";
-	private MailUtilImpl mailUtilImpl=new MailUtilImpl();
+	private MailUtilImpl mailUtilImpl = new MailUtilImpl();
 
 	@Autowired
 	private ProfileVBValidator profileValidator;
@@ -55,57 +43,37 @@ public class ProfileController extends BaseController {
 	@ModelAttribute(PROFILE_MODEL_ATTRIBUTE_NAME)
 	public ProfileVB buildModel(HttpServletRequest request)
 			throws GenericException {
-		return populateProfileVB(request, new ProfileVB());
+		return new ProfileVB();
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String setupProfileForm(
+	public String setupForgotPasswordForm(
 			@ModelAttribute(PROFILE_MODEL_ATTRIBUTE_NAME) ProfileVB profileVB,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
+
 		logger.debug("Debug Statement");
 		logger.info("Info Statment");
 		logger.error("Error Statement");
-		return getFormView(Action.CreateProfile);
+		return getFormView(Action.ForgotPassword);
 	}
 
-	private ProfileVB populateProfileVB(HttpServletRequest request,
-			ProfileVB profileVB) {
-
-		if (null == profileVB) {
-			profileVB = new ProfileVB();
-		}
-		
-		profileVB.setStates(helperUtil.getStates());
-
-		return profileVB;
-	}
-
-	@RequestMapping(params = "createProfile", method = RequestMethod.POST)
-	public String createProfile(
+	@RequestMapping(method = RequestMethod.POST)
+	public String forgotPasswordMail(
 			@ModelAttribute(PROFILE_MODEL_ATTRIBUTE_NAME) ProfileVB profileVB,
 			BindingResult result, HttpServletRequest request,
 			HttpServletResponse response) throws GenericException {
 
-		logger.debug("START: Create Profile ()"+ profileVB.toString());
+		logger.debug("START: Create Profile ()" + profileVB.toString());
 		System.out.println("In Profile Controller");
-		
-		profileValidator.validatePortalVB(profileVB,result);
-		
-		if (result.hasErrors()) {
-			return getFormView(Action.CreateProfile);
-		}
-
 		try {
-			
-			userManager.createProfile(profileVB);
-			request.getSession(false).setAttribute("signedIn", 1);
-			mailUtilImpl.sendMail("Profile Created");
+			mailUtilImpl.sendMail("Forgot Password");
 		} catch (Exception ex) {
-			throw new GenericException("Exception occurred while Creating Profile In ProfileController",ex);
+			throw new GenericException(
+					"Exception occurred while Creating Profile In ProfileController",
+					ex);
 		}
-		return getSuccessView(Action.CreateProfile);
+		return getSuccessView(Action.ForgotPassword);
 	}
 
 }
