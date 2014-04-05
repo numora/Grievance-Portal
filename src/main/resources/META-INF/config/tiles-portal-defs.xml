@@ -23,7 +23,7 @@
     
     <!--  SignIn Page  -->	
 	<definition name="signin"            		    extends="portalLayout">
-	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	 	<put-attribute name="title"                	value="Grievance SignIn" type="string" />      
 	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
 	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/signin.jsp"/>
 	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
@@ -31,7 +31,7 @@
    	
 	 <!--  SignIn Page  -->	
 	<definition name="forgotPassword"            		    extends="portalLayout">
-	 	<put-attribute name="title"                	value="Grievance Home" type="string" />      
+	 	<put-attribute name="title"                	value="Grievance ForgotPassword" type="string" />      
 	    <put-attribute name="navigation"            value="/WEB-INF/jsp/common/navigation.jsp" />
 	    <put-attribute name="body"   				value="/WEB-INF/jsp/grievance/forgotPassword.jsp"/>
 	   	<put-attribute name="disableforwardpage"    value="true" type="string" cascade="true"/>
