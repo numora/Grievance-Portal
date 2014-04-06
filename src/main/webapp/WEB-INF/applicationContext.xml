@@ -74,6 +74,13 @@
             </util:list>
         </beans:constructor-arg>
     </beans:bean>
+    <util:properties id="killswitchProperties"
+          location="classpath:META-INF\properties\killswitch.properties"/>
+    
+     <beans:bean id="killSwitchHelper"
+                class="com.grievance.web.healthcare.helper.KillSwitchHelper">
+        <beans:property name="servletContext" ref="servletContext"/>
+    </beans:bean>
     
  	<util:properties id="regularExpression"
           location="classpath:META-INF\properties\portal_regular_expressions.properties"/>

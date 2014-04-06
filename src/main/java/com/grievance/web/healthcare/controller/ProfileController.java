@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.grievance.web.healthcare.bean.validators.ProfileVBValidator;
 import com.grievance.web.healthcare.constants.CommonConstants.Action;
 import com.grievance.web.healthcare.exception.GenericException;
+import com.grievance.web.healthcare.helper.KillSwitchHelper;
 import com.grievance.web.healthcare.manager.UserManager;
 import com.grievance.web.healthcare.util.MailUtilImpl;
 import com.grievance.web.healthcare.viewbean.ProfileVB;
@@ -35,18 +36,26 @@ import com.grievance.web.healthcare.viewbean.ProfileVB;
 @RequestMapping("/createProfile")
 public class ProfileController extends BaseController {
 
-	static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
+	static final Logger logger = LoggerFactory
+			.getLogger(ProfileController.class);
 
 	public static final String VIEW_NAME = "createProfile";
 
 	public static final String PROFILE_MODEL_ATTRIBUTE_NAME = "profileVB";
-	private MailUtilImpl mailUtilImpl=new MailUtilImpl();
+	private MailUtilImpl mailUtilImpl = new MailUtilImpl();
 
 	@Autowired
 	private ProfileVBValidator profileValidator;
 
 	@Autowired
 	private UserManager userManager;
+
+	private KillSwitchHelper killSwitchHelper;
+
+	@Autowired
+	public void setKillSwitchHelper(KillSwitchHelper killSwitchHelper) {
+		this.killSwitchHelper = killSwitchHelper;
+	}
 
 	public String getViewName() {
 		return VIEW_NAME;
@@ -63,7 +72,7 @@ public class ProfileController extends BaseController {
 			@ModelAttribute(PROFILE_MODEL_ATTRIBUTE_NAME) ProfileVB profileVB,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
+
 		logger.debug("Debug Statement");
 		logger.info("Info Statment");
 		logger.error("Error Statement");
@@ -76,7 +85,7 @@ public class ProfileController extends BaseController {
 		if (null == profileVB) {
 			profileVB = new ProfileVB();
 		}
-		
+
 		profileVB.setStates(helperUtil.getStates());
 
 		return profileVB;
@@ -88,22 +97,26 @@ public class ProfileController extends BaseController {
 			BindingResult result, HttpServletRequest request,
 			HttpServletResponse response) throws GenericException {
 
-		logger.debug("START: Create Profile ()"+ profileVB.toString());
+		logger.debug("START: Create Profile ()" + profileVB.toString());
 		System.out.println("In Profile Controller");
-		
-		profileValidator.validatePortalVB(profileVB,result);
-		
+		profileValidator.validatePortalVB(profileVB, result);
 		if (result.hasErrors()) {
 			return getFormView(Action.CreateProfile);
 		}
-
 		try {
-			
+			if (this.killSwitchHelper.getControlEmail().equals("false")) {
+				profileVB.setActivateId(1);
+			}
 			userManager.createProfile(profileVB);
 			request.getSession(false).setAttribute("signedIn", 1);
-			mailUtilImpl.sendMail("Profile Created");
+			if (this.killSwitchHelper.getControlEmail().equals("true")) {
+				mailUtilImpl.sendProfileActivateMail("Profile Created",
+						profileVB.getEmail(), profileVB.getActivateId());
+			}
 		} catch (Exception ex) {
-			throw new GenericException("Exception occurred while Creating Profile In ProfileController",ex);
+			throw new GenericException(
+					"Exception occurred while Creating Profile In ProfileController",
+					ex);
 		}
 		return getSuccessView(Action.CreateProfile);
 	}

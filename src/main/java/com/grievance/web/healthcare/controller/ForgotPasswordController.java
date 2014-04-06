@@ -51,10 +51,6 @@ public class ForgotPasswordController extends BaseController {
 			@ModelAttribute(PROFILE_MODEL_ATTRIBUTE_NAME) ProfileVB profileVB,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-
-		logger.debug("Debug Statement");
-		logger.info("Info Statment");
-		logger.error("Error Statement");
 		return getFormView(Action.ForgotPassword);
 	}
 
@@ -67,7 +63,8 @@ public class ForgotPasswordController extends BaseController {
 		logger.debug("START: Create Profile ()" + profileVB.toString());
 		System.out.println("In Profile Controller");
 		try {
-			mailUtilImpl.sendMail("Forgot Password");
+			mailUtilImpl.sendPasswordRecoveryMail("Forgot Password",
+					profileVB.getEmail());
 		} catch (Exception ex) {
 			throw new GenericException(
 					"Exception occurred while Creating Profile In ProfileController",

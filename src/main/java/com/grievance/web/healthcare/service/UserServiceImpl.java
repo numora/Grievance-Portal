@@ -84,7 +84,6 @@ public class UserServiceImpl extends HibernateDaoSupport implements UserService 
 	public boolean activateUser(User user) {
 		boolean status = false;
 		try {
-			System.out.print("Activate User");
 			Query query = getSession().getNamedQuery("user.activateUser");
 			query.setLong("activate_id", user.getActivate_id());
 			query.setString("email", user.getEmail_id());
@@ -94,7 +93,31 @@ public class UserServiceImpl extends HibernateDaoSupport implements UserService 
 				getHibernateTemplate().saveOrUpdate(user);
 				status = true;
 			}
-			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			status = false;
+		}
+		return status;
+	}
+
+	@Override
+	@Transactional
+	public boolean updatePassword(User user) {
+		boolean status = false;
+		try {
+			Query query = getSession().getNamedQuery("user.updatePassword");
+			String pwd = user.getPassword();
+			int activateId = user.getActivate_id();
+			query.setString("email", user.getEmail_id());
+			user = (User) query.uniqueResult();
+			if (null != user) {
+				user.setPassword(pwd);
+				user.setActivate_id(activateId);
+				getHibernateTemplate().saveOrUpdate(user);
+				status = true;
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			status = false;

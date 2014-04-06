@@ -31,11 +31,9 @@ public class UserManagerImpl extends BaseManager implements UserManager {
 
 	@Override
 	public ProfileVB getUserDetails(String userName, String passWord) {
-
 		if (logger.isDebugEnabled()) {
 			logger.debug("START: getUserDetails()::Retrieve the User Details Based on Login Name and Password");
 		}
-
 		ProfileVB userVB = null;
 		User user = userService.checkCredentials(userName, passWord);
 		if (user != null) {
@@ -44,42 +42,33 @@ public class UserManagerImpl extends BaseManager implements UserManager {
 			userVB.setFirstName(user.getLogin_name());
 			System.out.println("Email Addres" + userVB.getEmail());
 		}
-
 		if (logger.isDebugEnabled()) {
 			logger.debug("END: getUserDetails()");
 		}
-
 		return userVB;
 	}
 
 	public boolean createProfile(ProfileVB profileVB) {
-
 		logger.debug("START: createProfile()::Create the User");
-
 		boolean isProfileCreated = false;
-
 		User user = new User();
 		user = (User) dozerTransformer.retrieveMap(profileVB, user, null);
-		user.setActivate_id(randInt(100000, 999999));
-
-		System.out.println("After Dozzer Map:" + user.getEmail_id());
-
-		System.out.println("After Dozzer Map:" + user);
-
+		if (1 != profileVB.getActivateId()) {
+			user.setActivate_id(randInt(100000, 999999));
+		} else {
+			user.setActivate_id(1);
+		}
 		isProfileCreated = userService.createUser(user);
+		profileVB.setActivateId(user.getActivate_id());
 		if (logger.isDebugEnabled()) {
 			logger.debug("END: createUser()");
 		}
 		return isProfileCreated;
-
 	}
 
 	public boolean activateProfile(ProfileVB profileVB) {
-
 		logger.debug("START: createProfile()::Create the User");
-
 		boolean isProfileActivated = false;
-
 		User user = new User();
 		user.setEmail_id(profileVB.getEmail());
 		user.setActivate_id(profileVB.getActivateId());
@@ -89,18 +78,29 @@ public class UserManagerImpl extends BaseManager implements UserManager {
 			logger.debug("END: createUser()");
 		}
 		return isProfileActivated;
+	}
+
+	public boolean updatePassword(ProfileVB profileVB) {
+		logger.debug("START: createProfile()::Create the User");
+		boolean isPasswordUpdated = false;
+		User user = new User();
+		user = (User) dozerTransformer.retrieveMap(profileVB, user, null);
+		user.setPassword(profileVB.getPassword());
+		user.setActivate_id(profileVB.getActivateId());
+		isPasswordUpdated = userService.updatePassword(user);
+		if (logger.isDebugEnabled()) {
+			logger.debug("END: createUser()");
+		}
+		return isPasswordUpdated;
 
 	}
 
 	public static int randInt(int min, int max) {
-
 		// Usually this can be a field rather than a method variable
 		Random rand = new Random();
-
 		// nextInt is normally exclusive of the top value,
 		// so add 1 to make it inclusive
 		int randomNum = rand.nextInt((max - min) + 1) + min;
-
 		return randomNum;
 	}
 

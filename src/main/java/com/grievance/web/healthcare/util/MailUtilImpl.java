@@ -1,5 +1,9 @@
 package com.grievance.web.healthcare.util;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -11,7 +15,19 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class MailUtilImpl {
-	public void sendMail(String subject) {
+
+	public void sendProfileActivateMail(String subject, String email,
+			int activateId) throws MalformedURLException {
+		sendMail(subject, email, activateId);
+	}
+
+	public void sendPasswordRecoveryMail(String subject, String email)
+			throws MalformedURLException {
+		sendMail(subject, email, 0);
+	}
+
+	public void sendMail(String subject, String email, int activateId)
+			throws MalformedURLException {
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -20,7 +36,7 @@ public class MailUtilImpl {
 				"javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.port", "465");
-
+		StringBuffer content = new StringBuffer();
 		Session session = Session.getDefaultInstance(props,
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
@@ -30,23 +46,32 @@ public class MailUtilImpl {
 				});
 
 		try {
-
-			// Message message = new MimeMessage(session);
-			// message.setContent("Dear Mail Crawler,"
-			// +"\n\n No spam to my email, please!");
 			MimeMessage message = new MimeMessage(session);
 
-			message.setFrom(new InternetAddress("sujanvanka@gmail.com"));
+			message.setFrom(new InternetAddress("grievanceportal@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("svankadari@nisum.com"));
+					InternetAddress.parse(email));
 			message.setSubject(subject);
-			// Send the actual HTML message, as big as you like
-			message.setContent("<h1>User is Created the message</h1>",
-					"text/html");
+			if (subject.contains("Forgot Password")) {
+				content.append("Please click on below link to recover your password");
+				content.append("<br>");
+				URL url = new URL("http", "localhost", 8080,
+						"/grievance/grievance/passwordRecovery?email=" + email);
+				content.append("<br>");
+				content.append(url.toString());
 
+			} else if (subject.contains("Profile Created") && activateId != 0) {
+				content.append("Please click on below link to activate your profile");
+				content.append("<br>");
+				URL url = new URL("http", "localhost", 8080,
+						"/grievance/grievance/activateProfile?email=" + email
+								+ "&activateId=" + activateId);
+				content.append("<br>");
+				content.append(url.toString());
+
+			}
+			message.setContent(content.toString(), "text/html");
 			Transport.send(message);
-
-			System.out.println("Done");
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);

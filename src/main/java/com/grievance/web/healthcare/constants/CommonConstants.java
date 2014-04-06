@@ -33,7 +33,7 @@ public interface CommonConstants {
 		EditAccount,
 		ViewAccount,
 		GrievanceHome,
-		ResetPassword, activateProfile, ForgotPassword;
+		ResetPassword, activateProfile, ForgotPassword, PasswordRecovery;
 		
 		public String formView() {
 			return (new StringBuilder()).append(this.name()).append(

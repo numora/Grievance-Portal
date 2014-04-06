@@ -20,7 +20,8 @@ import javax.persistence.Table;
 @Table(name = "user")
 @NamedQueries({
 		@NamedQuery(name = "user.findByLoginName", query = "from User where login_name = :name and password= :password and activate_id=1"),
-		@NamedQuery(name = "user.activateUser", query = "from User where activate_id = :activate_id and email_id= :email") })
+		@NamedQuery(name = "user.activateUser", query = "from User where activate_id = :activate_id and email_id= :email"),
+		@NamedQuery(name = "user.updatePassword", query = "from User where email_id= :email")})
 public class User {
 
 	private Integer user_id;

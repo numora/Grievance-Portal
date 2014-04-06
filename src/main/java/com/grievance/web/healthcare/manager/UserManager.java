@@ -10,4 +10,6 @@ public interface UserManager {
 	
 	boolean activateProfile(ProfileVB profileVB);
 	
+	boolean updatePassword(ProfileVB profileVB);
+	
 }
