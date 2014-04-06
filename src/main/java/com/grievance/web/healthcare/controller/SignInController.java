@@ -65,7 +65,6 @@ public class SignInController extends BaseController {
 
 		logger.debug("In Process Signin ");
 		ProfileVB profileVB = null;
-
 		System.out.print("Process Signin" + signInVB.getLoginName());
 		signInValidator.validatePortalVB(signInVB, result);
 		request.getSession(true).setAttribute("signedIn", 0);
@@ -81,11 +80,12 @@ public class SignInController extends BaseController {
 				System.out.println("User Successfully Logined"
 						+ profileVB.getLastName());
 				request.getSession(true).setAttribute("signedIn", 1);
-				signInVB.setSignedIn((Integer) request.getSession().getAttribute("signedIn"));
+				signInVB.setSignedIn((Integer) request.getSession()
+						.getAttribute("signedIn"));
 				return getFormView(Action.GrievanceHome);
 			}
-			if (profileVB==null){
-				
+			if (profileVB == null) {
+
 			}
 		} catch (Exception ex) {
 			request.getSession(true).setAttribute("signedIn", 0);

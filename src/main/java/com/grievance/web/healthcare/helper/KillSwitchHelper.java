@@ -32,7 +32,13 @@ public class KillSwitchHelper implements ServletContextAware {
 	}
 
 	public String getControlEmail() {
+
 		return controlEmail;
+	}
+
+	public Boolean getControlEmailValue() {
+
+		return controlEmail.equals("true") ? true : false;
 	}
 
 	public void setControlEmail(String controlEmail) {

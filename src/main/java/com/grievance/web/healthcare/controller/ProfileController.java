@@ -72,22 +72,15 @@ public class ProfileController extends BaseController {
 			@ModelAttribute(PROFILE_MODEL_ATTRIBUTE_NAME) ProfileVB profileVB,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-
-		logger.debug("Debug Statement");
-		logger.info("Info Statment");
-		logger.error("Error Statement");
 		return getFormView(Action.CreateProfile);
 	}
 
 	private ProfileVB populateProfileVB(HttpServletRequest request,
 			ProfileVB profileVB) {
-
 		if (null == profileVB) {
 			profileVB = new ProfileVB();
 		}
-
 		profileVB.setStates(helperUtil.getStates());
-
 		return profileVB;
 	}
 
@@ -104,12 +97,12 @@ public class ProfileController extends BaseController {
 			return getFormView(Action.CreateProfile);
 		}
 		try {
-			if (this.killSwitchHelper.getControlEmail().equals("false")) {
+			if (!this.killSwitchHelper.getControlEmailValue()) {
 				profileVB.setActivateId(1);
 			}
 			userManager.createProfile(profileVB);
 			request.getSession(false).setAttribute("signedIn", 1);
-			if (this.killSwitchHelper.getControlEmail().equals("true")) {
+			if (this.killSwitchHelper.getControlEmailValue()) {
 				mailUtilImpl.sendProfileActivateMail("Profile Created",
 						profileVB.getEmail(), profileVB.getActivateId());
 			}
