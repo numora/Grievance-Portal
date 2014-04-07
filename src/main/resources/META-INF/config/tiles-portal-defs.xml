@@ -30,6 +30,14 @@
 		<put-attribute name="disableforwardpage" value="true"
 			type="string" cascade="true" />
 	</definition>
+        <definition name="openidsignin" extends="portalLayout">
+		<put-attribute name="title" value="Grievance SignIn"
+			type="string" />
+		<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigation.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/grievance/openIdSignIn.jsp" />
+		<put-attribute name="disableforwardpage" value="true"
+			type="string" cascade="true" />
+	</definition>
 
 	<!-- SignIn Page -->
 	<definition name="forgotPassword" extends="portalLayout">
