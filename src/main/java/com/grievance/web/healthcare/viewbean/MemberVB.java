@@ -4,6 +4,7 @@ import com.grievance.web.healthcare.beans.common.Address;
 
 public class MemberVB {
 
+	private int memberId;
 	private String firstName;
 	private String lastName;
 	private String middleInitial;
@@ -66,6 +67,14 @@ public class MemberVB {
 
 	public void setProviderId(int providerId) {
 		this.providerId = providerId;
+	}
+
+	public int getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
 	}
 
 }

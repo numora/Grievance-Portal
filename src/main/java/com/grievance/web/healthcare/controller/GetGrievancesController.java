@@ -1,6 +1,6 @@
 /**************************************************************************
  *
- * Name: CreateGrievanceController.java
+ * Name: GetGrievanceController.java
  *
  * Created By: 
  *
@@ -11,6 +11,8 @@
  *************************************************************************/
 
 package com.grievance.web.healthcare.controller;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,11 +33,11 @@ import com.grievance.web.healthcare.manager.GrievanceManager;
 import com.grievance.web.healthcare.viewbean.GrievanceVB;
 
 @Controller
-@RequestMapping("/CreateGrievance")
-public class CreateGrievanceController extends BaseController {
+@RequestMapping("/trackGrievances")
+public class GetGrievancesController extends BaseController {
 	static final Logger logger = LoggerFactory
 			.getLogger(ProfileController.class);
-	public static final String VIEW_NAME = "createGrievance";
+	public static final String VIEW_NAME = "getGrievances";
 	public static final String GRIEVANCE_MODEL_ATTRIBUTE_NAME = "grievanceVB";
 
 	@Autowired
@@ -59,37 +61,46 @@ public class CreateGrievanceController extends BaseController {
 			@ModelAttribute(GRIEVANCE_MODEL_ATTRIBUTE_NAME) GrievanceVB grievanceVB,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-
-		logger.debug("Debug Statement");
-		logger.info("Info Statment");
-		logger.error("Error Statement");
-		return getFormView(Action.CreateGrievance);
+		grievanceVB.setGrievances(grievanceManager.getAllGrievances());
+		return getFormView(Action.getGrievances);
 	}
 
-	@RequestMapping(params = "CreateGrievance", method = RequestMethod.POST)
-	public String createGrievance(
+	@RequestMapping(params = "getGrievance", method = RequestMethod.POST)
+	public String getGrievance(
 			@ModelAttribute(GRIEVANCE_MODEL_ATTRIBUTE_NAME) GrievanceVB grievanceVB,
 			BindingResult result, HttpServletRequest request,
 			HttpServletResponse response) throws GenericException {
 
-		logger.debug("START: Create Grievance" + grievanceVB.toString());
-		System.out.println("In Create Grievance Controller");
+		logger.debug("START: Get Grievance" + grievanceVB.toString());
+		System.out.println("In Get Grievance Controller");
 
 		// grievanceVBValidator.validatePortalVB(grievanceVB,result);
 
 		if (result.hasErrors()) {
-			return getFormView(Action.CreateGrievance);
+			return getFormView(Action.getGrievance);
 		}
 
 		try {
+			if (null != grievanceVB.getSSN()) {
+				grievanceVB = grievanceManager
+						.getGrievanceDetailsBySSN(grievanceVB);
+			} else if (0 != grievanceVB.getGrievanceId()) {
+				grievanceVB = grievanceManager
+						.getGrievanceDetailsByGrievanceId(grievanceVB);
+			} else if (0 != grievanceVB.getMemberVB().getMemberId()) {
+				grievanceVB = grievanceManager
+						.getGrievanceDetailsByMemberId(grievanceVB);
+			}
 
-			grievanceVB = grievanceManager.createGrievance(grievanceVB);
+			if (null == grievanceVB.getContactEmail()) {
+				grievanceVB.setNodetails(true);
+			}
 		} catch (Exception ex) {
 			throw new GenericException(
-					"Exception occurred while Creating Grievance In CreateGrievanceController",
+					"Exception occurred while getting Grievance In GetGrievanceController",
 					ex);
 		}
-		return getSuccessView(Action.CreateGrievance);
+		return getSuccessView(Action.getGrievance);
 	}
 
 }

@@ -98,6 +98,51 @@
 		<put-attribute name="disableforwardpage" value="true"
 			type="string" cascade="true" />
 	</definition>
+	
+	<definition name="getGrievance" extends="portalLayout">
+		<put-attribute name="title" value="Grievance Home" type="string" />
+		<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigation.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/grievance/getgrievance.jsp" />
+		<put-attribute name="disableforwardpage" value="true"
+			type="string" cascade="true" />
+	</definition>
+
+	<definition name="getGrievanceSuccess" extends="portalLayout">
+		<put-attribute name="title" value="Grievance Home" type="string" />
+		<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigation.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/grievance/getGrievanceSuccess.jsp" />
+		<put-attribute name="disableforwardpage" value="true"
+			type="string" cascade="true" />
+	</definition>
+	
+	<definition name="getGrievanceDetails" extends="portalLayout">
+		<put-attribute name="title" value="Grievance Home" type="string" />
+		<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigation.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/grievance/getGrievanceDetails.jsp" />
+		<put-attribute name="disableforwardpage" value="true"
+			type="string" cascade="true" />
+	</definition>
+	
+	<definition name="getGrievances" extends="portalLayout">
+		<put-attribute name="title" value="Grievance Home" type="string" />
+		<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigation.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/grievance/grievances.jsp" />
+		<put-attribute name="disableforwardpage" value="true"
+			type="string" cascade="true" />
+	</definition>
+
+	<definition name="getGrievancesSuccess" extends="portalLayout">
+		<put-attribute name="title" value="Grievance Home" type="string" />
+		<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigation.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/grievance/getGrievancesSuccess.jsp" />
+		<put-attribute name="disableforwardpage" value="true"
+			type="string" cascade="true" />
+	</definition>
 
 	<definition name="trackGrievance" extends="portalLayout">
 		<put-attribute name="title" value="Grievance Home" type="string" />
@@ -116,7 +161,7 @@
 		<put-attribute name="disableforwardpage" value="true"
 			type="string" cascade="true" />
 	</definition>
-	
+
 	<definition name="passwordRecovery" extends="portalLayout">
 		<put-attribute name="title" value="Grievance Home" type="string" />
 		<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigation.jsp" />

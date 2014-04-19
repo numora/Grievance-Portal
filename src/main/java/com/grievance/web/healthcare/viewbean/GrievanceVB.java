@@ -1,6 +1,7 @@
 package com.grievance.web.healthcare.viewbean;
 
 import java.util.Date;
+import java.util.List;
 
 public class GrievanceVB extends BaseVB {
 
@@ -20,7 +21,8 @@ public class GrievanceVB extends BaseVB {
 	private String taxonomy;
 	private MemberVB memberVB;
 	private MemberVB fedMemberVB;
-	
+	private boolean nodetails;
+	private List<GrievanceVB> grievances;
 
 	public int getGrievanceType() {
 		return grievanceType;
@@ -138,6 +140,22 @@ public class GrievanceVB extends BaseVB {
 		return memberVB;
 	}
 
+	public List<GrievanceVB> getGrievances() {
+		return grievances;
+	}
+
+	public void setGrievances(List<GrievanceVB> grievances) {
+		this.grievances = grievances;
+	}
+
+	public boolean isNodetails() {
+		return nodetails;
+	}
+
+	public void setNodetails(boolean nodetails) {
+		this.nodetails = nodetails;
+	}
+
 	public void setMemberVB(MemberVB memberVB) {
 		this.memberVB = memberVB;
 	}
@@ -145,8 +163,6 @@ public class GrievanceVB extends BaseVB {
 	public MemberVB getFedMemberVB() {
 		return fedMemberVB;
 	}
-
-	
 
 	public void setFedMemberVB(MemberVB fedMemberVB) {
 		this.fedMemberVB = fedMemberVB;

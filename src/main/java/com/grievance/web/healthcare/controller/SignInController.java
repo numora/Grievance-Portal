@@ -79,7 +79,7 @@ public class SignInController extends BaseController {
 			if (profileVB != null) {
 				System.out.println("User Successfully Logined"
 						+ profileVB.getLastName());
-				request.getSession(true).setAttribute("signedIn", 1);
+				request.getSession(true).setAttribute("profileVB", profileVB);
 				signInVB.setSignedIn((Integer) request.getSession()
 						.getAttribute("signedIn"));
 				return getFormView(Action.GrievanceHome);

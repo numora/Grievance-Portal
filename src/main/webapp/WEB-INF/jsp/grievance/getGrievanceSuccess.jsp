@@ -4,36 +4,47 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <div id="container">
 	<div id="content">
 		<div>
 			<spring:bind path="grievanceVB.*">
 				<form:form modelAttribute="grievanceVB" id="grievanceForm"
 					method="POST">
+					<c:choose>
+						<c:when test="${(grievanceVB.nodetails)}">
+					We could not find your grievance Details please click here to create a new Grievance <a
+								href="/grievance/grievance/CreateGrievance"> Create Grievance</a>
+						</c:when>
+						<c:otherwise>
 				  Please find your grievance details below
 				  <h3>Grievance Info</h3>
-					<form:label path="grievanceType" id="grievanceType">
+							<form:label path="grievanceType" id="grievanceType">
 							Grievance Type
 							</form:label>
 							${grievanceVB.grievanceType}
 							<br>
-					<form:label path="SSN" id="SSN">
+							<form:label path="SSN" id="SSN">
 							SSN
 							</form:label>
 							${grievanceVB.SSN}
 							<br>
-					<form:label path="contactEmail" id="contactEmail">
+							<form:label path="contactEmail" id="contactEmail">
 							Contact Email
 							</form:label>
 							${grievanceVB.contactEmail}
 							<br>
-					<form:label path="contactPhone" id="contactPhone">
+							<form:label path="contactPhone" id="contactPhone">
 							Contact Phone
 							</form:label>
 							${grievanceVB.contactPhone}
 							<br>
+						</c:otherwise>
+					</c:choose>
 				</form:form>
 			</spring:bind>
+
 		</div>
 	</div>
+</div>
 </div>

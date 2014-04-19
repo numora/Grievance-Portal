@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -15,7 +16,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "grievance")
-@NamedQuery(name="grievance.trackGrievnace", query="from Grievance where grievance_id = :grievanceId and contact_email= :email and ssn =:ssn")
+@NamedQueries({@NamedQuery(name = "grievance.trackGrievnace", query = "from Grievance where grievance_id = :grievanceId and contact_email= :email and ssn =:ssn"), 
+@NamedQuery(name = "grievance.getGrievanceBySSN", query = "from Grievance where ssn =:ssn"),@NamedQuery(name = "grievance.getGrievanceByID", query = "from Grievance where grievance_id = :grievanceId"),@NamedQuery(name = "grievance.getAllGrievances", query = "from Grievance")})
 public class Grievance {
 
 	private int grievance_id;

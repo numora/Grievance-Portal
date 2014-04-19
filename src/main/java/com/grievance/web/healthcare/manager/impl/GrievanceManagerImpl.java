@@ -1,5 +1,8 @@
 package com.grievance.web.healthcare.manager.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +36,7 @@ public class GrievanceManagerImpl extends BaseManager implements
 		System.out.println("After Dozzer Map:" + grievance);
 
 		isGrievanceCreated = grievanceService.createGrievance(grievance);
-		if(grievance!=null){
+		if (grievance != null && isGrievanceCreated) {
 			grievanceVB.setGrievanceId(grievance.getGrievance_id());
 		}
 		if (logger.isDebugEnabled()) {
@@ -48,7 +51,7 @@ public class GrievanceManagerImpl extends BaseManager implements
 		Grievance grievance = new Grievance();
 		grievance = (Grievance) dozerTransformer.retrieveMap(grievanceVB,
 				grievance, null);
-        
+
 		System.out.println("After Dozzer Map:" + grievance);
 
 		grievance = grievanceService.trackGrievance(grievance);
@@ -56,7 +59,7 @@ public class GrievanceManagerImpl extends BaseManager implements
 		if (logger.isDebugEnabled()) {
 			logger.debug("END: trackGrievance()");
 		}
-		if(grievance!=null){
+		if (grievance != null) {
 			grievanceVB.setContactPhone(grievance.getContact_cell());
 			grievanceVB.setExclusionCode(grievance.getExclusion_code());
 			grievanceVB.setExclusionDesc(grievance.getExclusion_desc());
@@ -73,4 +76,73 @@ public class GrievanceManagerImpl extends BaseManager implements
 
 	}
 
+	public GrievanceVB getGrievanceDetails(GrievanceVB grievanceVB) {
+		Grievance grievance = new Grievance();
+		grievance = (Grievance) dozerTransformer.retrieveMap(grievanceVB,
+				grievance, null);
+
+		grievance = grievanceService.getGrievanceDetails(grievance);
+
+		if (logger.isDebugEnabled()) {
+			logger.debug("END: trackGrievance()");
+		}
+		if (grievance != null) {
+			grievanceVB.setContactEmail(grievance.getContact_email());
+			grievanceVB.setSSN(grievance.getSsn());
+			grievanceVB.setContactPhone(grievance.getContact_cell());
+			grievanceVB.setExclusionCode(grievance.getExclusion_code());
+			grievanceVB.setExclusionDesc(grievance.getExclusion_desc());
+			grievanceVB.setExclusionDate(grievance.getExclusion_date());
+			grievanceVB.setGrievanceType(grievance.getGrievance_type());
+			grievanceVB.setLicenseExpDate(grievance.getLic_exp_date());
+			grievanceVB.setLicenseNumber(grievance.getLicense_number());
+			grievanceVB.setLicenseType(grievance.getLicense_type());
+			grievanceVB.setTaxonomy(grievance.getTaxonomy());
+			grievanceVB.setNpi(grievance.getNpi());
+			grievanceVB.setTaxId(grievance.getTax_id());
+		}
+		return grievanceVB;
+	}
+
+	@Override
+	public GrievanceVB getGrievanceDetailsByMemberId(GrievanceVB grievanceVB) {
+		return getGrievanceDetails(grievanceVB);
+	}
+
+	@Override
+	public GrievanceVB getGrievanceDetailsByGrievanceId(GrievanceVB grievanceVB) {
+		return getGrievanceDetails(grievanceVB);
+	}
+
+	@Override
+	public GrievanceVB getGrievanceDetailsBySSN(GrievanceVB grievanceVB) {
+		return getGrievanceDetails(grievanceVB);
+	}
+
+	@Override
+	public List<GrievanceVB> getAllGrievances() {
+		List<Grievance> grievances = grievanceService.getAllGrievances();
+		List<GrievanceVB> grievancesVB = new ArrayList<GrievanceVB>();
+		for (Grievance grievance : grievances) {
+			if (grievance != null) {
+				GrievanceVB grievanceVB = new GrievanceVB();
+				grievanceVB.setContactEmail(grievance.getContact_email());
+				grievanceVB.setSSN(grievance.getSsn());
+				grievanceVB.setContactPhone(grievance.getContact_cell());
+				grievanceVB.setExclusionCode(grievance.getExclusion_code());
+				grievanceVB.setExclusionDesc(grievance.getExclusion_desc());
+				grievanceVB.setExclusionDate(grievance.getExclusion_date());
+				grievanceVB.setGrievanceType(grievance.getGrievance_type());
+				grievanceVB.setLicenseExpDate(grievance.getLic_exp_date());
+				grievanceVB.setLicenseNumber(grievance.getLicense_number());
+				grievanceVB.setLicenseType(grievance.getLicense_type());
+				grievanceVB.setTaxonomy(grievance.getTaxonomy());
+				grievanceVB.setNpi(grievance.getNpi());
+				grievanceVB.setTaxId(grievance.getTax_id());
+				grievanceVB.setGrievanceId(grievance.getGrievance_id());
+				grievancesVB.add(grievanceVB);
+			}
+		}
+		return grievancesVB;
+	}
 }

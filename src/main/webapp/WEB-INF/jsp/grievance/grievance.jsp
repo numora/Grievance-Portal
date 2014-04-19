@@ -4,18 +4,41 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <div id="container">
 	<div id="content">
 		<spring:bind path="grievanceVB.*">
 			<form:form modelAttribute="grievanceVB" id="grievanceForm"
 				method="POST">
-				<h3>Provider Info</h3>
+				<h3>Payer Info</h3>
 				<form:select path="memberVB.providerId" class="providerDropdown">
 					<form:option label="Anthem" value="0"></form:option>
 					<form:option label="Kaiser" value="1"></form:option>
 					<form:option label="Anthem Kaiser" value="2"></form:option>
 					<br>
 				</form:select>
+				<%-- <form:label path="SSN" id="SSN">
+					SSN
+				</form:label>
+				<form:input id="SSN" name="SSN" path="SSN" maxlength="80" />
+				<form:errors path="SSN" cssClass="error" />
+				<br>
+				<form:label path="grievanceId" id="grievanceId">
+					GrievanceId
+				</form:label>
+				<form:input id="grievanceId" name="grievanceId" path="grievanceId"
+					maxlength="80" />
+				<form:errors path="grievanceId" cssClass="error" />
+				<br>
+
+				<form:label path="memberVB.memberId" id="memberVB.memberId">
+					MemberId
+				</form:label>
+				<form:input id="memberVB.memberId" name="memberVB.memberId"
+					path="memberVB.memberId" maxlength="80" />
+				<form:errors path="memberVB.memberId" cssClass="error" />
+				<br> --%>
+
 				<h3>Member Info</h3>
 				<br>
 				<form:label path="memberVB.firstName" id="memberVB.firstName">
@@ -177,7 +200,6 @@
 				<br>
 
 				<h3>Grievance Info</h3>
-
 				<form:label path="grievanceType" id="grievanceType">
 					Grievance Type
 				</form:label>
@@ -265,7 +287,7 @@
 				<form:input id="taxonomy" name="taxonomy" path="taxonomy"
 					maxlength="80" />
 				<br>
-				<button type="submit" id="submit" name="createGrievance">
+				<button type="submit" id="submit" name="CreateGrievance">
 					<span>Create Grievance</span>
 				</button>
 			</form:form>

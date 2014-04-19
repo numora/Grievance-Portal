@@ -1,6 +1,6 @@
 /**************************************************************************
  *
- * Name: CreateGrievanceController.java
+ * Name: GetGrievanceController.java
  *
  * Created By: 
  *
@@ -31,11 +31,11 @@ import com.grievance.web.healthcare.manager.GrievanceManager;
 import com.grievance.web.healthcare.viewbean.GrievanceVB;
 
 @Controller
-@RequestMapping("/CreateGrievance")
-public class CreateGrievanceController extends BaseController {
+@RequestMapping("/getGrievanceDetails")
+public class GetGrievanceDetailsController extends BaseController {
 	static final Logger logger = LoggerFactory
 			.getLogger(ProfileController.class);
-	public static final String VIEW_NAME = "createGrievance";
+	public static final String VIEW_NAME = "getGrievanceDetails";
 	public static final String GRIEVANCE_MODEL_ATTRIBUTE_NAME = "grievanceVB";
 
 	@Autowired
@@ -59,37 +59,11 @@ public class CreateGrievanceController extends BaseController {
 			@ModelAttribute(GRIEVANCE_MODEL_ATTRIBUTE_NAME) GrievanceVB grievanceVB,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-
-		logger.debug("Debug Statement");
-		logger.info("Info Statment");
-		logger.error("Error Statement");
-		return getFormView(Action.CreateGrievance);
-	}
-
-	@RequestMapping(params = "CreateGrievance", method = RequestMethod.POST)
-	public String createGrievance(
-			@ModelAttribute(GRIEVANCE_MODEL_ATTRIBUTE_NAME) GrievanceVB grievanceVB,
-			BindingResult result, HttpServletRequest request,
-			HttpServletResponse response) throws GenericException {
-
-		logger.debug("START: Create Grievance" + grievanceVB.toString());
-		System.out.println("In Create Grievance Controller");
-
-		// grievanceVBValidator.validatePortalVB(grievanceVB,result);
-
-		if (result.hasErrors()) {
-			return getFormView(Action.CreateGrievance);
-		}
-
-		try {
-
-			grievanceVB = grievanceManager.createGrievance(grievanceVB);
-		} catch (Exception ex) {
-			throw new GenericException(
-					"Exception occurred while Creating Grievance In CreateGrievanceController",
-					ex);
-		}
-		return getSuccessView(Action.CreateGrievance);
+		grievanceVB
+				.setGrievanceId(Integer.parseInt(request.getParameter("id")));
+		grievanceVB = grievanceManager
+				.getGrievanceDetailsByGrievanceId(grievanceVB);
+		return getFormView(Action.getGrievanceDetails);
 	}
 
 }

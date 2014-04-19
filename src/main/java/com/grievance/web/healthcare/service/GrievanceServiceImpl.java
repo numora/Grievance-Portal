@@ -1,5 +1,7 @@
 package com.grievance.web.healthcare.service;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Component;
@@ -10,6 +12,7 @@ import com.grievance.web.healthcare.newmodel.Address;
 import com.grievance.web.healthcare.newmodel.Grievance;
 import com.grievance.web.healthcare.newmodel.Member;
 import com.grievance.web.healthcare.newmodel.User;
+import com.grievance.web.healthcare.viewbean.GrievanceVB;
 
 @Component
 @Repository("grievanceService")
@@ -55,6 +58,36 @@ public class GrievanceServiceImpl extends HibernateDaoSupport implements
 		query.setString("email", grievance.getContact_email());
 		query.setString("ssn", grievance.getSsn());
 		Grievance trackgrievance = (Grievance) query.uniqueResult();
+		return trackgrievance;
+
+	}
+
+	public Grievance getGrievanceDetails(Grievance grievance) {
+		Grievance grievanceDetails = null;
+		System.out.print("Retrieving Grievance Details ");
+		if (null != grievance.getSsn()) {
+			Query query = getSession().getNamedQuery(
+					"grievance.getGrievanceBySSN");
+			query.setString("ssn", grievance.getSsn());
+			grievanceDetails = (Grievance) query.uniqueResult();
+		} else if (0 != grievance.getGrievance_id()) {
+			Query query = getSession().getNamedQuery(
+					"grievance.getGrievanceByID");
+			query.setInteger("grievanceId", grievance.getGrievance_id());
+			grievanceDetails = (Grievance) query.uniqueResult();
+		}
+		// query.setString("email", grievance.getContact_email());
+
+		return grievanceDetails;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Grievance> getAllGrievances() {
+		System.out.print("Retrieving Grievance Details ");
+		Query query = getSession().getNamedQuery("grievance.getAllGrievances");
+		List<Grievance> trackgrievance = query.list();
 		return trackgrievance;
 
 	}

@@ -40,7 +40,9 @@ public class UserManagerImpl extends BaseManager implements UserManager {
 			userVB = new ProfileVB();
 			userVB.setEmail(user.getEmail_id());
 			userVB.setFirstName(user.getLogin_name());
+			userVB.setRoldId(user.getRole_id());
 			System.out.println("Email Addres" + userVB.getEmail());
+			System.out.println("Role" + userVB.getRoldId());
 		}
 		if (logger.isDebugEnabled()) {
 			logger.debug("END: getUserDetails()");

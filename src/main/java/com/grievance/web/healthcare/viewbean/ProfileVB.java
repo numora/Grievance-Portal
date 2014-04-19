@@ -25,6 +25,16 @@ public class ProfileVB extends BaseVB {
 	private Phone phone;
 	
 	private int activateId;
+	
+	private int roldId;
+
+	public int getRoldId() {
+		return roldId;
+	}
+
+	public void setRoldId(int roldId) {
+		this.roldId = roldId;
+	}
 
 	public String getEmail() {
 		return email;

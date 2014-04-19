@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <div id="container">
 	<div id="content">
 		<div>
@@ -32,8 +33,11 @@
 							</form:label>
 							${grievanceVB.contactPhone}
 							<br>
+
 				</form:form>
 			</spring:bind>
+
 		</div>
 	</div>
+</div>
 </div>
