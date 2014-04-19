@@ -12,6 +12,7 @@ import com.grievance.web.healthcare.manager.BaseManager;
 import com.grievance.web.healthcare.manager.GrievanceManager;
 import com.grievance.web.healthcare.newmodel.Grievance;
 import com.grievance.web.healthcare.service.GrievanceService;
+import com.grievance.web.healthcare.service.GrievanceWorkflowService;
 import com.grievance.web.healthcare.viewbean.GrievanceVB;
 
 @Component
@@ -22,11 +23,16 @@ public class GrievanceManagerImpl extends BaseManager implements
 
 	@Autowired
 	private GrievanceService grievanceService;
+	
+	@Autowired
+	private GrievanceWorkflowService grievanceWorkflowService;
 
 	public GrievanceVB createGrievance(GrievanceVB grievanceVB) {
 
 		logger.debug("START: Create Greivance()::Create the Grievance");
 
+		grievanceWorkflowService.startGrievanceWorkflow();
+		
 		boolean isGrievanceCreated = false;
 
 		Grievance grievance = new Grievance();
