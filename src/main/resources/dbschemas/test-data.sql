@@ -6,17 +6,16 @@ VALUES
 INSERT INTO USER
 	(USER_ID, PASSWORD, EMAIL_ID, LAST_MODIFIED_DATE, LOGIN_NAME, CREATED_DATE, VERIFIED, ROLE_ID, DOB, "LANGUAGE", ADDRESS_ID,activate_id)
 VALUES 
-	(1, '1234', 'test1@test.com','2014-01-01 14:49:01' , 'test1','2014-01-01 14:49:01' , 'Y', 1, '2014-01-01 14:49:01', 'english',1,1);
+	(1, '1234', 'test1@test.com','2013-06-05' , 'test1','2013-06-05' , 'Y', 1, '2013-06-05', 'english',1,1);
 
 INSERT INTO USER
 	(USER_ID, PASSWORD, EMAIL_ID, LAST_MODIFIED_DATE, LOGIN_NAME, CREATED_DATE, VERIFIED, ROLE_ID, DOB, "LANGUAGE", ADDRESS_ID,activate_id)
 VALUES 
-	(2, '1234', 'test2@test.com','2014-01-01 14:49:01' , 'test2','2014-01-01 14:49:01' , 'Y', 2, '2014-01-01 14:49:01', 'english',1,1);
-	
+	(2, '1234', 'test2@test.com','2014-01-01' , 'test2','2014-01-01' , 'Y', 2, '2014-01-01', 'english',1,1);
 INSERT INTO USER
 	(USER_ID, PASSWORD, EMAIL_ID, LAST_MODIFIED_DATE, LOGIN_NAME, CREATED_DATE, VERIFIED, ROLE_ID, DOB, "LANGUAGE", ADDRESS_ID,activate_id)
 VALUES 
-	(3, '1234', 'test3@test.com','2014-01-01 14:49:01' , 'test3','2014-01-01 14:49:01' , 'Y', 3, '2014-01-01 14:49:01', 'english',1,1);
+	(3, '1234', 'test3@test.com','2014-01-01' , 'test3','2014-01-01' , 'Y', 3, '2014-01-01', 'english',1,1);
 	
 	insert into provider(provider_id,provier_name,provider_speciality,provider_type) values (1,'Kaiser','Kaiser','Kaiser');
 	insert into provider(provider_id,provier_name,provider_speciality,provider_type) values (2,'Anthem','Anthem','Anthem');

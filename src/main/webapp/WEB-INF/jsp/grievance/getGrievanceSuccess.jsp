@@ -14,7 +14,7 @@
 					<c:choose>
 						<c:when test="${(grievanceVB.nodetails)}">
 					We could not find your grievance Details please click here to create a new Grievance <a
-								href="/grievance/grievance/CreateGrievance"> Create Grievance</a>
+								href="/Grievance/grievance/CreateGrievance"> Create Grievance</a>
 						</c:when>
 						<c:otherwise>
 				  Please find your grievance details below

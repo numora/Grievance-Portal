@@ -18,7 +18,7 @@
 						varStatus="status">
 						<form:label path="grievanceId" id="grievanceId">
 							<a
-								href="/grievance/grievance/getGrievanceDetails?id=${grievances.grievanceId}">
+								href="/Grievance/grievance/getGrievanceDetails?id=${grievances.grievanceId}">
 								${grievances.grievanceId}</a>
 						</form:label>
 						<br>
