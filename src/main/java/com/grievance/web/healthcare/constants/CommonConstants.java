@@ -25,6 +25,7 @@ public interface CommonConstants {
     public enum Action {
 		Home,
 		SignIn,
+                Welcome,
                 openidsignin,
 		Success,
 		Registration,

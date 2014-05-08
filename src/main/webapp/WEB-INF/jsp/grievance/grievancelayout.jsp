@@ -27,9 +27,7 @@
 			<div id="header_section">
 		    	<tiles:insertAttribute name="header" />
 			</div>
-			<div id="navigation_section">
-	    		<tiles:insertAttribute name="navigation" />
-			</div>
+
 		</div>
 		 <div id="body">
 			    <tiles:insertAttribute name="body" />

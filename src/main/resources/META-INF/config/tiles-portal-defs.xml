@@ -8,7 +8,7 @@
 	<definition name="portalHome" template="/WEB-INF/jsp/common/layout.jsp">
 		<put-attribute name="title" value="Grievance Home" type="string" />
 		<put-attribute name="header" value="/WEB-INF/jsp/common/header.jsp" />
-		<put-attribute name="navigation" value="/WEB-INF/jsp/common/navigation.jsp" />
+		
 		<put-attribute name="body" value="/WEB-INF/jsp/common/home.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
 	</definition>
@@ -20,7 +20,20 @@
 		<put-attribute name="header" value="/WEB-INF/jsp/common/header.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
 	</definition>
+<!-- welcome Page -->
 
+<definition name="welcome" extends="portalLayout">
+		<put-attribute name="title" value="Grievance welcome"
+			type="string" />
+
+		<put-attribute name="body" value="/WEB-INF/jsp/grievance/welcome.jsp" />
+		<put-attribute name="disableforwardpage" value="true"
+			type="string" cascade="true" />
+	</definition>
+        
+        
+        <!-- welcome Page -->
+        
 	<!-- SignIn Page -->
 	<definition name="signin" extends="portalLayout">
 		<put-attribute name="title" value="Grievance SignIn"
